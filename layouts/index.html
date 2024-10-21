@@ -1,0 +1,251 @@
+{{ define "css" }}
+{{ end }}
+
+{{ define "main" }}
+<canvas id="projector">Your browser does not support the Canvas element.</canvas>
+<div id="content" data-bs-target="#navbar" data-bs-offset="0" class="d-flex w-100 h-100 mx-auto flex-column"
+  tabindex="0">
+  <section id="home" class="banner-area">
+    <div class="container">
+      <div class="row fullscreen align-items-top justify-content-between">
+        <div class="col-lg-6 col-md-6 banner-left pt-3 pb-3">
+          <h6><br></h6>
+          <h1>Горячев Константин</h1>
+          <h6>Tech Lead | Senior Web Software Engineer</h6>
+        </div>
+        <div class="col-lg-6 col-md-6 banner-right d-flex align-self-end"> <img class="img-fluid first"
+            src="img/ava.webp" alt="" /> </div>
+      </div>
+    </div>
+  </section>
+  <section id="about" class="services-area section-gap first">
+    <div class="container">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-12 about">
+          <h2>Обо мнe</h2>
+          <p> 
+            Являюсь техническим руководителем продукта. Занимаюсь выстраиванием деливери процессов и развитием команды.<br>
+            Отвечаю за работу команд разработки, тестирования, системного анализа и архитектуры. <br>
+            Принимаю непосредственное участие в создании высоконагруженных, отказоустойчивых и надежных приложений, уделяя особое внимание наблюдаемости, стабильности и производительности систем.
+          </p>
+          <ul>
+            <li>Занимаюсь разработкой и проектированием более 10 лет / руковожу тех командами 5 лет;</li>
+            <li>Основные языки программирования Ruby и Go. Также владею Elixir и TS;</li>
+            <li>Имею большой опыт работы в финтехе - работа с платежным шлюзом и токенизация;</li>
+            <li>Участвовал в разработке платформы <a class="text-dark" href="https://www.mosmetro.ru/payment/contactless-payment/virtual-troyka"><i>"Виртуальная Тройка"</i></a> и внедрения оплаты при помощи <a class="text-dark" href="https://mosmetro.ru/facepay"><i>FacePay</i></a>;</li>
+            <li>Работал над бэкендом приложения <a class="text-dark" href="https://siter.io"><i>"Siter"</i></a>, ставшего лучшим продуктом дня/недели/месяца на <a class="text-dark" href="https://www.producthunt.com/products/siter"><i>Product Hunt</i></a>.
+            </li>
+          </ul>
+          <br>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid py-5">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="horizontal-timeline">
+            <ul class="list-inline items">
+              <li class="list-inline-item items-list">
+                <div class="px-4">
+                  <div class="event-date badge bg-dark">2016</div>
+                  <h5 class="pt-2">Lognetix</h5>
+                  <p class="text-muted">
+                    <i>Фулл-стек разработчик</i><br>
+                    Разработка и сопровождение веб приложений на Ruby/Angular для перевозок из Китая в РФ (полный производственный цикл), интеграция с китайскими и российскими сервисами.
+                  </p>
+                </div>
+              </li>
+              <li class="list-inline-item items-list">
+                <div class="px-4">
+                  <div class="event-date badge bg-dark">2019</div>
+                  <h5 class="pt-2">МультиКарта / ВТБ</h5>
+                  <p class="text-muted">
+                    <i>Главный эксперт</i> <br>
+                    Разработка и поддержка скоринговой системы для проезда на транспорте Москвы, переход на микросервисную архитектуру, оптимизация приложений.
+                  </p>
+                </div>
+              </li>
+              <li class="list-inline-item items-list">
+                <div class="px-4">
+                  <div class="event-date badge bg-dark">2021</div>
+                  <h5 class="pt-2">Иннотех</h5>
+                  <p class="text-muted">
+                    <i>Руководитель группы разработки</i><br>
+                    Руководство разработкой, тестированием и архитекторой. Принимал участие в разработке сервисов "Виртуальной тройки" и Face Pay для метро Москвы и Мосгортранса.
+                  </p>
+                </div>
+              </li>
+              <li class="list-inline-item items-list">
+                <div class="px-4">
+                  <div class="event-date badge bg-dark">2022</div>
+                  <h5 class="pt-2">Samokat.tech</h5>
+                  <p class="text-muted">
+                    <i>Tech Lead</i><br>
+                    Организация работы групп фронтенд и бэкенд разработки, тестирования и системного анализа.
+                    Отвечаю за создание новых продуктов, а также за соблюдение качества и сроков. 
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="projects" class="edu-area section-gap">
+    <div class="container">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-12 projects">
+          <h2>Основные проекты</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3 col-md-12 pb-3">
+          <div class="card"> <img class="card-img-top" src="img/troika.webp" alt="troika">
+            <div class="card-body">
+              <h5 class="card-title">Виртуальная Тройка</h5>
+              <p class="card-text">Проездной в вашем смартфоне. Больше никаких лишних пластиковых карт и очереди за
+                билетами.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-12 pb-3">
+          <div class="card"> <img class="card-img-top" src="img/covid.webp" alt="troika">
+            <div class="card-body">
+              <h5 class="card-title">CovidQrWallet</h5>
+              <p class="card-text">Cертификат о вакцинации Covid-19 в вашем Apple Wallet. Больше тебе не придется
+                тратить время, чтобы найти свой QR.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-12 pb-3">
+          <div class="card"> <img class="card-img-top" src="img/storysdk.webp" alt="troika">
+            <div class="card-body">
+              <h5 class="card-title">StorySDK</h5>
+              <p class="card-text">Создавайте и добавляйте сторис в ваши приложения. Истории создаются в пару кликов в
+                веб-редакторе.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-12 pb-3">
+          <div class="card"> <img class="card-img-top" src="img/siter.webp" alt="troika">
+            <div class="card-body">
+              <h5 class="card-title">Siter</h5>
+              <p class="card-text">Проектируйте в облаке и создавайте новые веб-сайты без каких-либо навыков
+                программирования.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="edu" class="services-area section-gap first">
+    <div class="container">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-12 edu">
+          <h2>Обучение</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="slider" data-slider="chiefslider">
+          <div class="slider__container">
+            <div class="slider__wrapper">
+              <div class="slider__items">
+                <div class="slider__item">
+                  <div class="slider__item-container">
+                    <div class="slider__item-content">
+                      <div class="slider__content_header">
+                        <img class="slider__content_img" src="img/edu2.webp">
+                      </div>
+                      <h2 class="slider__content_title">Оптимизация Ruby/Rails-приложений</h2>
+                      <div class="slider__content_footer">
+                        <span class="slider__content_author">Thinknetica</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="slider__item">
+                  <div class="slider__item-container">
+                    <div class="slider__item-content">
+                      <div class="slider__content_header">
+                        <img class="slider__content_img" src="img/edu1.webp">
+                      </div>
+                      <h2 class="slider__content_title">Микросервисная архитектура</h2>
+                      <div class="slider__content_footer">
+                        <span class="slider__content_author">Microarch</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="slider__item">
+                  <div class="slider__item-container">
+                    <div class="slider__item-content">
+                      <div class="slider__content_header">
+                        <img class="slider__content_img" src="img/edu3.webp">
+                      </div>
+                      <h2 class="slider__content_title">Безопасность Rails-приложений</h2>
+                      <div class="slider__content_footer">
+                        <span class="slider__content_author">Thinknetica</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="slider__item">
+                  <div class="slider__item-container">
+                    <div class="slider__item-content">
+                      <div class="slider__content_header">
+                        <img class="slider__content_img" src="img/edu4.webp">
+                      </div>
+                      <h2 class="slider__content_title">Разработка на GO</h2>
+                      <div class="slider__content_footer">
+                        <span class="slider__content_author">Thinknetica</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="slider__item">
+                  <div class="slider__item-container">
+                    <div class="slider__item-content">
+                      <div class="slider__content_header">
+                        <img class="slider__content_img" src="img/edu5.webp">
+                      </div>
+                      <h2 class="slider__content_title">5 soft skills проджект-менеджера в IT</h2>
+                      <div class="slider__content_footer">
+                        <span class="slider__content_author">Skillsetter</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="#" class="slider__control" data-slide="prev"></a>
+          <a href="#" class="slider__control" data-slide="next"></a>
+          <ol class="slider__indicators">
+            <li data-slide-to="1"></li>
+            <li data-slide-to="2"></li>
+            <li data-slide-to="3"></li>
+            <li data-slide-to="4"></li>
+            <li data-slide-to="5"></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{{ end }}
+
+{{ define "js" }}
+<script src="/bg.js"></script>
+<script src="/slider.js"></script>
+<script>
+  const $slider = document.querySelector('[data-slider="chiefslider"]');
+  const slider = new ChiefSlider($slider, {
+    loop: true,
+    autoplay: true,
+    interval: 5000,
+    refresh: true,
+    swipe: true
+  });
+</script>
+{{ end }}
