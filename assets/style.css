@@ -47,11 +47,26 @@ h6 {
 }
 
 h2.title {
-  font-size: 3rem;
+  font-size: 32px;
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
 
+h5.card-title a {
+  color: black;
+}
+.post.card {
+  min-height: 33rem;
+  margin-bottom: 1rem;
+}
+
+a.box {
+  text-decoration: none;
+}
+
+article img {
+  max-width: 100%;
+}
 @media (max-width: 768px) {
   #content {
     margin-top: 0.5rem;

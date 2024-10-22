@@ -2,11 +2,6 @@
 <div id="post">
   <main class="container mb-6">
     <h2 class="title">{{ .Title }}</h2>
-    <p class="subtitle">
-      <span class="tag is-link">{{ .ReadingTime }} мин</span>
-      <span class="tag is-dark">{{ .Date.Format "02-01-2006" }}</span>
-    </p>
-
     <article class="content">
       {{ .Content }}
     </article>

@@ -1,12 +1,17 @@
 {{ define "main" }}
-<div id="post">
-  <main class="container">
-    <h1 class="title">{{ .Title }}</h1>
-    <div>
+<style>
+  body {
+    background-color: white;
+  }
+</style>
+<div class="container">
+  <div id="post">
+    <h2 class="title">Посты</h2>
+    <div class="row">
       {{ range .Pages }}
       {{ .Render "summary" }}
       {{ end }}
     </div>
-  </main>
+  </div>
 </div>
 {{ end }}
