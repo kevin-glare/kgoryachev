@@ -25,11 +25,11 @@
           <h2>Обо мнe</h2>
           <p> 
             Являюсь техническим руководителем продукта. Занимаюсь выстраиванием деливери процессов и развитием команды.<br>
-            Отвечаю за работу команд разработки, тестирования, системного анализа и архитектуры. <br>
+            Отвечаю за работу команд разработки, тестирования, системного анализа и архитектуры.<br>
             Принимаю непосредственное участие в создании высоконагруженных, отказоустойчивых и надежных приложений, уделяя особое внимание наблюдаемости, стабильности и производительности систем.
           </p>
           <ul>
-            <li>Занимаюсь разработкой и проектированием более 10 лет / руковожу тех командами 5 лет;</li>
+            <li><a class="text-dark" href="https://spb.hh.ru/resume/758a7029ff02fcf79f0039ed1f596658354457">Занимаюсь разработкой и проектированием</a> более 10 лет / руковожу тех командами 5 лет;</li>
             <li>Основные языки программирования Ruby и Go. Также владею Elixir и TS;</li>
             <li>Имею большой опыт работы в финтехе - работа с платежным шлюзом и токенизация;</li>
             <li>Участвовал в разработке платформы <a class="text-dark" href="https://www.mosmetro.ru/payment/contactless-payment/virtual-troyka"><i>"Виртуальная Тройка"</i></a> и внедрения оплаты при помощи <a class="text-dark" href="https://mosmetro.ru/facepay"><i>FacePay</i></a>;</li>
@@ -236,16 +236,8 @@
 {{ end }}
 
 {{ define "js" }}
-<script src="/bg.js"></script>
-<script src="/slider.js"></script>
-<script>
-  const $slider = document.querySelector('[data-slider="chiefslider"]');
-  const slider = new ChiefSlider($slider, {
-    loop: true,
-    autoplay: true,
-    interval: 5000,
-    refresh: true,
-    swipe: true
-  });
-</script>
+{{ $bg := resources.Get "bg.js" | minify | fingerprint }}
+{{ $slider := resources.Get "slider.js" | minify | fingerprint }}
+{{ $indexJS := slice $bg $slider | resources.Concat "index.js" }}
+<script src="{{ $indexJS.Permalink }}"></script>
 {{ end }}
