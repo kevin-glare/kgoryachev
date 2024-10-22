@@ -26,6 +26,32 @@ h6 {
   padding-top: 3.5rem;
 }
 
+#post {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+  background-color: white;
+}
+
+#post h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.2em !important;
+  margin-bottom: 0;
+  margin-top: 0;
+  font-weight: 600;
+  color: black;
+}
+
+h2.title {
+  font-size: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
 @media (max-width: 768px) {
   #content {
     margin-top: 0.5rem;
