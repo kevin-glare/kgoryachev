@@ -14,10 +14,10 @@ pinned: false
 homepage: false
 seo:
   title: "Авторизация через Facebook API"
-  description: "Firebase Cloud Messaging, ранее известная как Google Cloud Messaging, является кроссплатформенным облачным решением для отправки сообщений и уведомлений."
+  description: "Если вам необходимо реализовать вход в веб-приложение или приложение для компьютера через браузер без использования наших SDK, можно создать для себя процесс входа с использованием перенаправлений в браузере."
 ---
 
-![json](/posts/firebase.png "json")
+![facebook-auth](/posts/fb.png "facebook-auth")
 
 ### Сразу к сути
 Перейдите в браузере на страницу _https://www.facebook.com/v12.0/dialog/oauth_ с необходимыми параметрами:
