@@ -9,7 +9,7 @@ lastmod: 2021-09-28
 draft: false
 weight: 50
 categories: []
-tags: [json rails ]
+tags: [firebase google]
 pinned: false
 homepage: false
 seo:
@@ -17,7 +17,7 @@ seo:
   description: "Firebase Cloud Messaging, ранее известная как Google Cloud Messaging, является кроссплатформенным облачным решением для отправки сообщений и уведомлений."
 ---
 
-![firebase-push](/posts/firebase.png "firebase-push")
+![Отправка push уведомлений через Firebase Cloud Messaging](/posts/firebase.png "Отправка push уведомлений через Firebase Cloud Messaging")
 
 ### Что такое Firebase Cloud Messaging?
 Firebase Cloud Messaging, ранее известная как Google Cloud Messaging, является кроссплатформенным облачным решением для сообщений и уведомлений для Android, iOS и веб-приложений, которое с 2021 года можно будет использовать бесплатно. 

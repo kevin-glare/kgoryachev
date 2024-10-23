@@ -60,6 +60,20 @@ h5.card-title a {
   margin-bottom: 1rem;
 }
 
+.post.card a {
+  text-decoration: none;
+  color: black;
+}
+
+.post.card:hover {
+  border: solid 1px;
+}
+
+img.card-img-top.img-fluid {
+  min-height: 200px;
+  max-height: 200px;
+}
+
 .highlight pre {
   padding: 1rem;
 }
