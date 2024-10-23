@@ -60,6 +60,10 @@ h5.card-title a {
   margin-bottom: 1rem;
 }
 
+.highlight pre {
+  padding: 1rem;
+}
+
 a.box {
   text-decoration: none;
 }
