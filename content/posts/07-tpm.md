@@ -9,7 +9,7 @@ lastmod: 2021-10-31
 draft: false
 weight: 50
 categories: []
-tags: [management]
+tags: [management productivity]
 pinned: false
 homepage: false
 seo:
