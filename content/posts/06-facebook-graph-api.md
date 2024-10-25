@@ -9,7 +9,7 @@ lastmod: 2021-09-30
 draft: false
 weight: 50
 categories: []
-tags: [facebook meta]
+tags: [facebook ruby]
 pinned: false
 homepage: false
 seo:

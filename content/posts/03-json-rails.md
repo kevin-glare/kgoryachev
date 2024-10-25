@@ -9,7 +9,7 @@ lastmod: 2021-09-27
 draft: false
 weight: 50
 categories: []
-tags: [json rails]
+tags: [json rails ruby]
 pinned: false
 homepage: false
 seo:

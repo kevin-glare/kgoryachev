@@ -9,7 +9,7 @@ lastmod: 2021-10-31
 draft: false
 weight: 50
 categories: []
-tags: [json rails ]
+tags: [management]
 pinned: false
 homepage: false
 seo:

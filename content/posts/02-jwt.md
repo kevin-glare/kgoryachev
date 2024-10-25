@@ -9,7 +9,7 @@ lastmod: 2021-09-26
 draft: false
 weight: 50
 categories: []
-tags: [jwt]
+tags: [jwt ruby]
 pinned: false
 homepage: false
 seo:
