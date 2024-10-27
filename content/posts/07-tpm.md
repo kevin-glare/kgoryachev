@@ -5,16 +5,7 @@ description: "В 1951 году в японской промышленности 
 summary: "В 1951 году в японской промышленности появилась методология повышения качества, называвшаяся TPM (Total Productive Maintenance) . Она была ориентирована прежде всего на сопровождение, а не на производство."
 image: "/posts/tpm.png"
 date: 2021-10-31
-lastmod: 2021-10-31
-draft: false
-weight: 50
-categories: []
 tags: [management productivity]
-pinned: false
-homepage: false
-seo:
-  title: "Total Productive Maintenance"
-  description: "В 1951 году в японской промышленности появилась методология повышения качества, называвшаяся TPM (Total Productive Maintenance) . Она была ориентирована прежде всего на сопровождение, а не на производство. Так и появилась доктрина ринципов 5S."
 ---
 
 ![Total Productive Maintenance](/posts/tpm.png "Total Productive Maintenance")

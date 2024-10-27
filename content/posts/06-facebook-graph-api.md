@@ -5,16 +5,7 @@ description: "API Graph — это основной инструмент для 
 summary: "API Graph — это основной инструмент для загрузки данных на платформу Facebook и их получения оттуда. Он представляет собой API на базе HTTP, с помощью которого приложения могут обмениваться данными с fb."
 image: "/posts/fb-containers.jpg"
 date: 2021-09-30
-lastmod: 2021-09-30
-draft: false
-weight: 50
-categories: []
 tags: [facebook ruby]
-pinned: false
-homepage: false
-seo:
-  title: "Facebook Graph Api"
-  description: "API Graph — это основной инструмент для загрузки данных на платформу Facebook и их получения оттуда. Он представляет собой API на базе HTTP, с помощью которого приложения могут обмениваться данными с fb."
 ---
 
 ![Facebook Graph Api](/posts/fb-containers.jpg "Facebook Graph Api")
