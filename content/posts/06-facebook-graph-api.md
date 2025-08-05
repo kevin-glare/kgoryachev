@@ -3,12 +3,12 @@ slug: "facebook-grap-api"
 title: "Facebook Graph Api"
 description: "API Graph — это основной инструмент для загрузки данных на платформу Facebook и их получения оттуда. Он представляет собой API на базе HTTP, с помощью которого приложения могут обмениваться данными с fb."
 summary: "API Graph — это основной инструмент для загрузки данных на платформу Facebook и их получения оттуда. Он представляет собой API на базе HTTP, с помощью которого приложения могут обмениваться данными с fb."
-image: "/posts/fb-containers.jpg"
+image: "../posts/fb-containers.jpg"
 date: 2021-09-30
 tags: [facebook ruby]
 ---
 
-![Facebook Graph Api](/posts/fb-containers.jpg "Facebook Graph Api")
+![Facebook Graph Api](../../posts/fb-containers.jpg "Facebook Graph Api")
 
 ### Что такое Facebook Graph Api?
 API Graph — это основной инструмент для загрузки данных на платформу Facebook и их получения оттуда. Он представляет собой API на базе HTTP, с помощью которого приложения могут программным путем запрашивать данные, публиковать новые истории, управлять рекламой, загружать фото и выполнять множество других задач.

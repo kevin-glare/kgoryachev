@@ -3,12 +3,12 @@ slug: "docker-desktop-mac"
 title: "Ускорение работы Desktop на Mac"
 description: "Работа с Docker Desktop на Apple Silicon (M1, M2, M3) чипах изначально столкнулась с проблемами производительности из-за архитектурных различий между ARM64 (Apple Silicon) и x86_64 (традиционная архитектура большинства Docker-образов)."
 summary: "Работа с Docker Desktop на Apple Silicon (M1, M2, M3) чипах изначально столкнулась с проблемами производительности из-за архитектурных различий между ARM64 (Apple Silicon) и x86_64 (традиционная архитектура большинства Docker-образов)."
-image: "/posts/docker-mac-1.jpg"
+image: "../posts/docker-mac-1.jpg"
 date: 2025-02-06
 tags: [sa productivity]
 ---
 
-![Ускорение работы Desktop на Mac (Apple Silicon)](/posts/docker-mac.jpg "Ускорение работы Desktop на Mac (Apple Silicon)")
+![Ускорение работы Desktop на Mac (Apple Silicon)](../../posts/docker-mac.jpg "Ускорение работы Desktop на Mac (Apple Silicon)")
 
 ### Улучшение работы Docker Desktop на Apple Silicon
 Работа с Docker Desktop на Apple Silicon (M1, M2, M3) чипах изначально столкнулась с проблемами производительности из-за архитектурных различий между ARM64 (Apple Silicon) и x86_64 (традиционная архитектура большинства Docker-образов). Ключевые технологии и подходы позволяют значительно улучшить эту работу.
