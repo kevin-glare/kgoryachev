@@ -92,9 +92,6 @@ tags: [ai ollama]
 
     # Квантизованная версия ~26GB (Q2_K)
     llama3:70b-text-q2_K
-
-    # Список доступных вариантов
-    ollama show llama3 --versions
     ```
 
     Рекомендации:
