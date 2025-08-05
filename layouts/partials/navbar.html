@@ -6,24 +6,38 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item"> <a class="nav-link active" href="/">Главная</a> </li>
-        <li class="nav-item"> <a class="nav-link" href="#about">Обо мне</a> </li>
-        <li class="nav-item"> <a class="nav-link" href="#projects">Проекты</a> </li>
-        <li class="nav-item"> <a class="nav-link" href="#edu">Обучение</a> </li>
-        <li class="nav-item"> <a class="nav-link" href="posts">Статьи</a> </li>
+        {{ $navUrl := .Permalink }}
+        {{ if not (eq $navUrl .Site.BaseURL) }}
+          {{ $navUrl = "/" }}
+        {{ end }}
+        <li class="nav-item">
+          <a class="nav-link active" href={{ $navUrl }}>Главная</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href={{ $navUrl }}{{ "#about" }}>Обо мне</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href={{ $navUrl }}{{"#projects"}}>Проекты</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href={{ $navUrl }}{{"#edu"}}>Обучение</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts">Статьи</a> 
+        </li>
       </ul>
       <ul class="navbar-nav nav navbar-nav navbar-right list-group-horizontal">
         <li class="nav-item"> <a class="nav-link" href="https://t.me/kgoryachev" target="_blank">
-          <img src="images/base/tg.svg" class="icon"></a> 
+          <img src="/images/base/tg.svg" class="icon"></a> 
         </li>
         <li class="nav-item"> 
           <a class="nav-link" href="mailto:kevin.glare@gmail.com">
-            <img src="images/base/mail.svg" class="icon">
+            <img src="/images/base/mail.svg" class="icon">
           </a> 
         </li>
         <li class="nav-item"> 
           <a class="nav-link" href="https://github.com/kevin-glare" target="_blank">
-            <img src="images/base/gh.svg" class="icon">
+            <img src="/images/base/gh.svg" class="icon">
           </a> 
         </li>
       </ul>

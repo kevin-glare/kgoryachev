@@ -3,12 +3,12 @@ slug: "cors-amazon-cloudfront-s3"
 title: "CORS - Amazon CloudFront & S3"
 description: "Amazon предоставляет большой выбор веб-сервисов, которые мы можем дружить друг с другом, тем самым улучшая свой продукт. Сегодня я расскажу про CloudFront и S3, а также, как решить проблему с CORS."
 summary: "Amazon предоставляет большой выбор веб-сервисов, которые мы можем дружить друг с другом, тем самым улучшая свой продукт. Сегодня я расскажу про CloudFront и S3, а также, как решить проблему с CORS."
-image: "../posts/cors-s3.jpg"
+image: "/posts/cors-s3.jpg"
 date: 2022-08-13
 tags: [cors amazon cloudfront s3]
 ---
 
-![CORS - Amazon CloudFront & S3](../../posts/cors-s3.jpg "CORS - Amazon CloudFront & S3")
+![CORS - Amazon CloudFront & S3](/posts/cors-s3.jpg "CORS - Amazon CloudFront & S3")
 
 ### Приступим
 Amazon предоставляет большой выбор веб-сервисов, которые мы можем дружить друг с другом, тем самым улучшая свой продукт. 
@@ -52,4 +52,4 @@ Access to font at 'https://cdn.mysite.com/assets/font.woff2' from origin 'https:
 
 Теперь настроим правила для _Amazon CloudFront_, переходим в консоль, выбираем _Distributions_, выбираем наш _cdn_, проваливаемся внутрь, нажимаем на таб _Behaviors_ и редактируем (можно выбрать _Default (*)_).
 
-![CORS - Amazon CloudFront & S3](../../posts/cors-s3-1.png "CORS - Amazon CloudFront & S3")
+![CORS - Amazon CloudFront & S3](/posts/cors-s3-1.png "CORS - Amazon CloudFront & S3")
