@@ -2,3 +2,10 @@ baseURL = '/'
 languageCode = 'ru-RU'
 title = 'Горячев Константин'
 draft=false
+[caches]
+  [caches.assets]
+    dir = ':resourceDir/_gen'
+    maxAge = -1
+  [caches.images]
+    dir = ':resourceDir/_gen'
+    maxAge = -1
