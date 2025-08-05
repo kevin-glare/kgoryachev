@@ -14,7 +14,7 @@
           <h6 class="text-white">Tech Lead | Senior Web Software Engineer</h6>
         </div>
         <div class="col-lg-6 col-md-6 banner-right d-flex align-self-end"> <img class="img-fluid first"
-            src="img/ava.webp" alt="" /> </div>
+            src="images/base/ava.webp" alt="" /> </div>
       </div>
     </div>
   </section>
@@ -101,7 +101,7 @@
       </div>
       <div class="row">
         <div class="col-lg-3 col-md-12 pb-3">
-          <div class="card"> <img class="card-img-top" src="img/troika.webp" alt="troika">
+          <div class="card"> <img class="card-img-top" src="images/base/troika.webp" alt="troika">
             <div class="card-body">
               <h5 class="card-title">Виртуальная Тройка</h5>
               <p class="card-text">Проездной в вашем смартфоне. Больше никаких лишних пластиковых карт и очереди за
@@ -110,7 +110,7 @@
           </div>
         </div>
         <div class="col-lg-3 col-md-12 pb-3">
-          <div class="card"> <img class="card-img-top" src="img/covid.webp" alt="troika">
+          <div class="card"> <img class="card-img-top" src="images/base/covid.webp" alt="troika">
             <div class="card-body">
               <h5 class="card-title">CovidQrWallet</h5>
               <p class="card-text">Cертификат о вакцинации Covid-19 в вашем Apple Wallet. Больше тебе не придется
@@ -119,7 +119,7 @@
           </div>
         </div>
         <div class="col-lg-3 col-md-12 pb-3">
-          <div class="card"> <img class="card-img-top" src="img/storysdk.webp" alt="troika">
+          <div class="card"> <img class="card-img-top" src="images/base/storysdk.webp" alt="troika">
             <div class="card-body">
               <h5 class="card-title">StorySDK</h5>
               <p class="card-text">Создавайте и добавляйте сторис в ваши приложения. Истории создаются в пару кликов в
@@ -128,7 +128,7 @@
           </div>
         </div>
         <div class="col-lg-3 col-md-12 pb-3">
-          <div class="card"> <img class="card-img-top" src="img/siter.webp" alt="troika">
+          <div class="card"> <img class="card-img-top" src="images/base/siter.webp" alt="troika">
             <div class="card-body">
               <h5 class="card-title">Siter</h5>
               <p class="card-text">Проектируйте в облаке и создавайте новые веб-сайты без каких-либо навыков
@@ -155,7 +155,7 @@
                   <div class="slider__item-container">
                     <div class="slider__item-content">
                       <div class="slider__content_header">
-                        <img class="slider__content_img" src="img/edu2.webp">
+                        <img class="slider__content_img" src="images/base/edu2.webp">
                       </div>
                       <h2 class="slider__content_title">Оптимизация Ruby/Rails-приложений</h2>
                       <div class="slider__content_footer">
@@ -168,7 +168,7 @@
                   <div class="slider__item-container">
                     <div class="slider__item-content">
                       <div class="slider__content_header">
-                        <img class="slider__content_img" src="img/edu1.webp">
+                        <img class="slider__content_img" src="images/base/edu1.webp">
                       </div>
                       <h2 class="slider__content_title">Микросервисная архитектура</h2>
                       <div class="slider__content_footer">
@@ -181,7 +181,7 @@
                   <div class="slider__item-container">
                     <div class="slider__item-content">
                       <div class="slider__content_header">
-                        <img class="slider__content_img" src="img/edu3.webp">
+                        <img class="slider__content_img" src="images/base/edu3.webp">
                       </div>
                       <h2 class="slider__content_title">Безопасность Rails-приложений</h2>
                       <div class="slider__content_footer">
@@ -194,7 +194,7 @@
                   <div class="slider__item-container">
                     <div class="slider__item-content">
                       <div class="slider__content_header">
-                        <img class="slider__content_img" src="img/edu4.webp">
+                        <img class="slider__content_img" src="images/base/edu4.webp">
                       </div>
                       <h2 class="slider__content_title">Разработка на GO</h2>
                       <div class="slider__content_footer">
@@ -207,7 +207,7 @@
                   <div class="slider__item-container">
                     <div class="slider__item-content">
                       <div class="slider__content_header">
-                        <img class="slider__content_img" src="img/edu5.webp">
+                        <img class="slider__content_img" src="images/base/edu5.webp">
                       </div>
                       <h2 class="slider__content_title">5 soft skills проджект-менеджера в IT</h2>
                       <div class="slider__content_footer">
@@ -236,8 +236,8 @@
 {{ end }}
 
 {{ define "js" }}
-{{ $bg := resources.Get "bg.js" | minify | fingerprint }}
-{{ $slider := resources.Get "slider.js" | minify | fingerprint }}
+{{ $bg := resources.Get "js/bg.js" | minify | fingerprint }}
+{{ $slider := resources.Get "js/slider.js" | minify | fingerprint }}
 {{ $indexJS := slice $bg $slider | resources.Concat "index.js" }}
 <script src="{{ $indexJS.Permalink }}"></script>
 {{ end }}
