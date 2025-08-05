@@ -84,11 +84,14 @@ tags: [ai ollama]
 
     Примеры:
     ```sh
-    # Полная модель ~26GB
-    ollama pull llama3:70b
+    # Полная модель ~141GB (fp16)
+    llama3:70b-text-fp16
 
-    # Квантизованная версия ~4.1GB  
-    ollama pull llama3:70b-q2_k
+    # Квантизованная версия ~40GB (Q4_0)
+    llama3:70b-text-q4_0
+
+    # Квантизованная версия ~26GB (Q2_K)
+    llama3:70b-text-q2_K
 
     # Список доступных вариантов
     ollama show llama3 --versions
