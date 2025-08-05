@@ -8,8 +8,5 @@ run:
 build:
 	hugo --gc --minify
 
-deploy:
-	scp -r ./public/* server:~/personal/
-
 chmod: 
 	chmod -R u+rwX,go+rX,go-w ./.
