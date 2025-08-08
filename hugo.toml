@@ -1,4 +1,4 @@
-baseURL = 'kgoryachev.ru'
+baseURL = 'https://kgoryachev.ru'
 languageCode = 'ru-RU'
 title = 'Горячев Константин'
 draft=false
