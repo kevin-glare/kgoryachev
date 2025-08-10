@@ -125,7 +125,7 @@ SELECT PG_COLUMN_SIZE(ROW(TRUE, 1::SMALLINT, 1::BIGINT)) - 24; -- 16 байт
     Текущая позиция → 16
     ```
 
-**Итого**:\ 1 (bool) + 1 (паддинг) + 2 (smallint) + 4 (паддинг) + 8 (bigint) = 16 байт
+**Итого**: 1 (bool) + 1 (паддинг) + 2 (smallint) + 4 (паддинг) + 8 (bigint) = 16 байт
 
 ### TOAST: Хранение "толстых" данных
 Когда длина строки в PostgreSQL превышает примерно 2 КБ, система автоматически использует механизм "TOAST" (The Oversized-Attribute Storage Technique) для оптимизации хранения. TOAST сжимает или перемещает большие значения полей в отдельную таблицу, оставляя в основной таблице лишь указатель на данные. 
@@ -242,11 +242,11 @@ SELECT
     ```
 3. Используйте `VACUUM FULL` после массовых изменений:
     ```sql
-    VACUUM (FULL, ANALYZE) large_table;
+    VACUUM (FULL, ANALYZE) table_name;
     ```
 4. Проверяйте через `pg_column_size`:
     ```sql
-    SELECT pg_column_size(ROW(your_columns)) FROM table LIMIT 1;
+    SELECT pg_column_size(ROW(your_columns)) FROM table_name LIMIT 1;
     ```
 5. Проверяйте через `pageinspect`:
     ```
