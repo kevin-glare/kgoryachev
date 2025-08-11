@@ -1,10 +1,8 @@
 ---
 slug: "postgresql-padding"
 title: "Оптимизация хранения данных в PostgreSQL"
-description: "Процессоры эффективно работают с данными, только когда они выровнены по границам памяти.
-PostgreSQL добавляет невидимые байты-заполнители  между полями, чтобы следующее поле начиналось с правильного адреса."
-summary: "Процессоры эффективно работают с данными, только когда они выровнены по границам памяти.
-PostgreSQL добавляет невидимые байты-заполнители  между полями, чтобы следующее поле начиналось с правильного адреса."
+description: "Каждая таблица в PostgreSQL — это не просто логическая структура, а сложный физический \"пазл\" из 8-КБ страниц, где порядок байтов решает всё: от скорости запросов до размера диска."
+summary: "Каждая таблица в PostgreSQL — это не просто логическая структура, а сложный физический \"пазл\" из 8-КБ страниц, где порядок байтов решает всё: от скорости запросов до размера диска."
 image: "/images/posts/abba.png"
 date: 2025-08-10
 tags: [postgresql sql]
@@ -13,19 +11,19 @@ tags: [postgresql sql]
 ![Оптимизация хранения данных в PostgreSQL](/images/posts/abba.png "Оптимизация хранения данных в PostgreSQL")
 
 ### Как PostgreSQL хранит данные: Физическая структура
-Процессоры эффективно работают с данными, только когда они выровнены по границам памяти.
-PostgreSQL добавляет невидимые байты-заполнители  между полями, чтобы следующее поле начиналось с правильного адреса.
+Каждая таблица в PostgreSQL — это не просто логическая структура, а сложный физический "пазл" из 8-КБ страниц, где порядок байтов решает всё: от скорости запросов до размера диска.
 
 Давайте рассмотрим небольшой пример:
 ```sql
-SELECT PG_COLUMN_SIZE(1::INT); -- 4 байта
 SELECT PG_COLUMN_SIZE(TRUE); -- 1 байт
+SELECT PG_COLUMN_SIZE(1::INT); -- 4 байта
+SELECT PG_COLUMN_SIZE(''::TEXT); -- 4 байта
 SELECT PG_COLUMN_SIZE(gen_random_uuid()); -- 16 байт
 ```
 
 Пока что все идет хорошо, давайте попробуем объеденить два значения и посмотрим, что имзменится:
 ```sql
-SELECT PG_COLUMN_SIZE(1::INT, 1::INT); -- ERROR: function pg_column_size(INTeger, INTeger) does not exist
+SELECT PG_COLUMN_SIZE(1::INT, 1::INT); -- ERROR: function pg_column_size(integer, integer) does not exist
 ```
 
 К сожалению, так сделать нельзя и нужно объеденить значения в строку:
@@ -145,7 +143,6 @@ WHERE attrelid = 'table_name'::regclass;
 1. Эффективное использование пространства – позволяет хранить большие объемы данных, не перегружая основную таблицу.
 2. Оптимизация производительности – запросы к данным, которые не используют большие значения, могут быть выполнены быстрее, так как не нужно обращаться к таблице TOAST. 
 
-
 ### Оптимальный порядок
 ```sql
 -- Неоптимизированная
@@ -168,9 +165,9 @@ CREATE TABLE good_table (
 **Результат для 1M строк:**
 ```sql
 SELECT 
-  pg_size_pretty(pg_total_relation_size('bad_table')) AS bad,   -- 65 MB
-  pg_size_pretty(pg_total_relation_size('good_table')) AS good; -- 58 MB
-                                                                -- экономия 11%
+  pg_size_pretty(pg_total_relation_size('bad_table')) AS bad,   -- 57 MB
+  pg_size_pretty(pg_total_relation_size('good_table')) AS good; -- 50 MB
+                                                                -- экономия 14%
 ```
 
 **Важно:**
@@ -232,6 +229,70 @@ SELECT
 4. **Меньше блокировок**\
 Короткие операции UPDATE → меньше времени удерживаются эксклюзивные блокировки.
 
+##### Небольшое дополнене по UPDATE
+Давайте возьмем нашу таблицу good_table и заполним ее данными:
+```sql
+INSERT INTO good_table (created_at, id, notes, is_active)
+SELECT
+    NOW(),
+    n,
+    LEFT('123456789', 5 + n % 5),
+    (CASE n % 2 WHEN 0 THEN TRUE ELSE FALSE END)
+FROM GENERATE_SERIES(1, 1000000) gs(n);
+```
+Проверим еще раз ее размер и получим все те же 50МБ:
+```sql
+SELECT pg_size_pretty(pg_total_relation_size('good_table')); -- 50 MB
+```
+Давайте обновим у всех записей поле `is_active` на `FALSE` (выберем только те записи, у которых `is_active` = `TRUE`):
+```sql
+UPDATE good_table
+SET is_active = FALSE
+WHERE is_active;
+```
+Посмотрим на размер таблицы:
+```sql
+SELECT PG_SIZE_PRETTY(PG_RELATION_SIZE('good_table')); -- 75 MB
+```
+Откуда взялось еще 25 MB данных, мы же обновили только одно поле, тот самый `bool`, который занимает 1 байт? Но если присмотреться повнимательнее, видно, что увеличение размеры таблицы пропорционально количеству обновленных записей - 50%.\
+**Основная причина - MVCC (Multiversion Concurrency Control):**
+- Старая версия строки остаётся на диске как "мертвый кортеж"
+- Новая версия записывается в свободное пространство страницы (или новую страницу)
+- Индексы пересоздаются для новой версии
+
+Давайте обновим данные еще раз, перепишем все флаги `is_active` на `TRUE`:
+```sql
+UPDATE good_table
+SET is_active = TRUE
+WHERE is_active = FALSE;
+```
+
+Посмотрим на размер таблицы:
+```sql
+SELECT PG_SIZE_PRETTY(PG_RELATION_SIZE('good_table')); -- 100 MB
+```
+
+Давайте обновим данные еще раз, перепишем все флаги `is_active` на `FALSE`:
+```sql
+UPDATE good_table
+SET is_active = FALSE
+WHERE is_active;
+```
+
+Посмотрим на размер таблицы:
+```sql
+SELECT PG_SIZE_PRETTY(PG_RELATION_SIZE('good_table')); -- 100 MB
+```
+
+При повторном обновлении рост прекратился: третьи версии строк записались в области, освобожденные первыми версиями, демонстрируя главное преимущество MVCC — повторное использование 'мертвого' пространства без расширения файлов.
+
+Все что необходимо сделать - прибраться за собой:
+```sql
+VACUUM FULL good_table;
+REINDEX TABLE good_table;
+SELECT PG_SIZE_PRETTY(PG_RELATION_SIZE('good_table')); -- 50 MB
+```
+
 ### Золотые правила оптимизации
 1. Порядок колонок влияет на размер таблиц до 30%.
     - Группируйте столбцы по размеру выравнивания.
@@ -268,5 +329,5 @@ SELECT PG_COLUMN_SIZE(ROW (NULL::bool, ''::text)) - 24;
 ### Полезные ссылки:
 - [Компоновка страницы базы данных](https://postgrespro.ru/docs/postgrespro/current/storage-page-layout)
 - [Хранение пустых (NULL) значений в таблицах PostgreSQL](https://habr.com/ru/articles/890718/)
-- [Оптимизация хранения данных в PostgreSQL](hhttps://habr.com/ru/companies/bercut/articles/859700/)
+- [Оптимизация хранения данных в PostgreSQL](https://habr.com/ru/companies/bercut/articles/859700/)
 - [Наполняем до краев: влияние порядка столбцов в таблицах на размеры баз данных PostgresQL](https://habr.com/ru/articles/756074/)
