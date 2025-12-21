@@ -109,6 +109,13 @@ article img {
 h2 {
   margin-bottom: 1.5em;
 }
+.content > h2 {
+  margin: 1em 0em 0.5em;
+}
+
+.content > h3 {
+  margin: 1em 0em 0.5em;
+}
 
 footer.footer-area.section-gap {
   background-color: #212529;
