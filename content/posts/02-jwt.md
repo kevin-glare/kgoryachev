@@ -5,7 +5,7 @@ description: "Это открытый стандарт (RFC 7519) для соз�
 summary: "Это открытый стандарт (RFC 7519) для создания токенов доступа, основанный на формате JSON, используется для передачи данных для аутентификации в клиент-серверных приложениях."
 image: "/images/posts/jwt.jpg"
 date: 2021-09-26
-tags: [jwt ruby]
+tags: [jwt, ruby, security]
 ---
 
 ![JSON Web Token](/images/posts/jwt.jpg "JSON Web Token")

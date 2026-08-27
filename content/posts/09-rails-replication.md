@@ -5,7 +5,7 @@ description: "Репликация - это процесс копировани�
 summary: "Репликация - это процесс копирования данных из одной базы данных в другую. Репликация может быть полезна для увеличения доступности и масштабируемости приложений, а также для обеспечения более высокой отказоустойчивости."
 image: "/images/posts/replication.png"
 date: 2021-11-08
-tags: [perfomance ruby rails db]
+tags: [performance, ruby, rails, database]
 ---
 
 ![Репликация](/images/posts/replication.png "Репликация")

@@ -1,21 +1,163 @@
 {{ define "main" }}
 <div id="post">
   <main class="container mb-6">
-    <h2 class="title">{{ .Title }}</h2>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Главная</a></li>
+        <li class="breadcrumb-item"><a href="/posts/">Статьи</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+      </ol>
+    </nav>
+
+    <h1 class="title post-title">{{ .Title }}</h1>
+
+    <div class="post-meta text-muted mb-3">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02.01.2006" }}</time>
+      {{ if .Lastmod.After .Date }}
+      <span aria-hidden="true">·</span>
+      <span>обновлено <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "02.01.2006" }}</time></span>
+      {{ end }}
+      <span aria-hidden="true">·</span>
+      <span>{{ .ReadingTime }} мин чтения</span>
+      {{ with .GetTerms "tags" }}
+      <span aria-hidden="true">·</span>
+      {{ range . }}
+      <a class="post-tag" href="{{ .Permalink }}">#{{ .LinkTitle }}</a>
+      {{ end }}
+      {{ end }}
+    </div>
+
+    {{ if and (default true .Params.toc) (gt (len .TableOfContents) 33) }}
+    <details class="toc mb-4">
+      <summary>Оглавление</summary>
+      {{ .TableOfContents }}
+    </details>
+    {{ end }}
+
     <article class="content">
       {{ .Content }}
     </article>
+
+    {{ $myTags := slice }}
+    {{ range .GetTerms "tags" }}{{ $myTags = $myTags | append .LinkTitle }}{{ end }}
+    {{ $related := slice }}
+    {{ range where site.RegularPages "Type" "posts" | complement (slice .) }}
+    {{ $score := 0 }}
+    {{ range .GetTerms "tags" }}
+    {{ if in $myTags .LinkTitle }}{{ $score = add $score 1 }}{{ end }}
+    {{ end }}
+    {{ if gt $score 0 }}{{ $related = $related | append (dict "page" . "score" $score) }}{{ end }}
+    {{ end }}
+    {{ $scored := sort $related "score" "desc" }}
+    {{ $final := slice }}
+    {{ range first 3 $scored }}{{ $final = $final | append .page }}{{ end }}
+    {{ if lt (len $final) 3 }}
+    {{ $exclude := $final | append . }}
+    {{ range where site.RegularPages "Type" "posts" | complement $exclude | first 3 }}
+    {{ if lt (len $final) 3 }}{{ $final = $final | append . }}{{ end }}
+    {{ end }}
+    {{ end }}
+    {{ with $final }}
+    <div class="related my-4">
+      <h3 class="h5 mb-3">Читайте также</h3>
+      <ul class="list-unstyled">
+        {{ range . }}
+        <li class="mb-2">
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          <span class="text-muted small ms-1">{{ .Date.Format "02.01.2006" }}</span>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+
+    <div class="share d-flex flex-wrap align-items-center gap-2 my-4">
+      <span class="text-muted me-1">Поделиться:</span>
+      <a class="btn btn-sm btn-outline-dark" href="https://t.me/share/url?url={{ .Permalink | absURL }}&text={{ .Title | urlquery }}" target="_blank" rel="noopener">Telegram</a>
+      <a class="btn btn-sm btn-outline-dark" href="https://vk.com/share.php?url={{ .Permalink | absURL }}" target="_blank" rel="noopener">ВКонтакте</a>
+      <a class="btn btn-sm btn-outline-dark" href="https://twitter.com/intent/tweet?url={{ .Permalink | absURL }}&text={{ .Title | urlquery }}" target="_blank" rel="noopener">X</a>
+      <button class="btn btn-sm btn-outline-dark" type="button" data-copy="{{ .Permalink | absURL }}">Скопировать ссылку</button>
+    </div>
+
+    <div class="card bg-dark text-white cta my-4">
+      <div class="card-body d-flex align-items-center gap-3">
+        <img src="/images/base/tg.svg" class="icon" alt="" aria-hidden="true" width="36" height="36">
+        <div>
+          Обсудить статью, задать вопрос или предложить тему —
+          <a class="text-white text-decoration-underline" href="{{ site.Params.telegram }}" target="_blank" rel="noopener">напишите мне в Telegram</a>
+        </div>
+      </div>
+    </div>
   </main>
 
   <div class="container content">
-    <ul>
+    <ul class="post-nav list-unstyled">
       {{ with .PrevInSection }}
-      <li>Previous Post: <a class="previous" href="{{ .Permalink }}">{{.Title}}</a></li>
+      <li>Предыдущая статья: <a class="previous" href="{{ .Permalink }}">{{ .Title }}</a></li>
       {{ end }}
       {{ with .NextInSection }}
-      <li>Next Post: <a class="next" href="{{ .Permalink }}">{{.Title}}</a></li>
+      <li>Следующая статья: <a class="next" href="{{ .Permalink }}">{{ .Title }}</a></li>
       {{ end }}
     </ul>
   </div>
 </div>
+
+<script>
+  function legacyCopy(text) {
+    return new Promise(function (resolve, reject) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy') ? resolve() : reject(new Error('copy failed'));
+      } catch (e) {
+        reject(e);
+      } finally {
+        document.body.removeChild(ta);
+      }
+    });
+  }
+
+  function copyToClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text).catch(function () { return legacyCopy(text); });
+    }
+    return legacyCopy(text);
+  }
+
+  document.querySelectorAll('[data-copy]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      copyToClipboard(btn.dataset.copy).then(function () {
+        var label = btn.textContent;
+        btn.textContent = 'Скопировано!';
+        setTimeout(function () { btn.textContent = label; }, 2000);
+      }).catch(function () {
+        var label = btn.textContent;
+        btn.textContent = 'Не удалось скопировать';
+        setTimeout(function () { btn.textContent = label; }, 2000);
+      });
+    });
+  });
+
+  // Кнопка "Копировать" у блоков кода
+  document.querySelectorAll('.highlight').forEach(function (block) {
+    var pre = block.querySelector('pre');
+    if (!pre) return;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'copy-code';
+    btn.textContent = 'Копировать';
+    btn.addEventListener('click', function () {
+      copyToClipboard(pre.innerText).then(function () {
+        btn.textContent = 'Скопировано!';
+        setTimeout(function () { btn.textContent = 'Копировать'; }, 2000);
+      });
+    });
+    block.appendChild(btn);
+  });
+</script>
 {{ end }}

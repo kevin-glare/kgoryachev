@@ -2,7 +2,7 @@
 {{ end }}
 
 {{ define "main" }}
-<canvas id="projector">Your browser does not support the Canvas element.</canvas>
+<canvas id="projector" aria-hidden="true">Your browser does not support the Canvas element.</canvas>
 <div id="content" data-bs-target="#navbar" data-bs-offset="0" class="d-flex w-100 h-100 mx-auto flex-column"
   tabindex="0">
   <section id="home" class="banner-area">
@@ -11,10 +11,10 @@
         <div class="col-lg-6 col-md-6 banner-left pt-3 pb-3">
           <h6><br></h6>
           <h1>Горячев Константин</h1>
-          <h6 class="text-white">Tech Lead | Senior Web Software Engineer</h6>
+          <h6 class="text-white">CTO | Tech Lead | Senior Web Software Engineer</h6>
         </div>
         <div class="col-lg-6 col-md-6 banner-right d-flex align-self-end"> <img class="img-fluid first"
-            src="/images/base/ava.webp" alt="" /> </div>
+            src="/images/base/ava.webp" width="463" height="462" alt="Горячев Константин" /> </div>
       </div>
     </div>
   </section>
@@ -22,7 +22,7 @@
     <div class="container">
       <div class="row align-items-center justify-content-between">
         <div class="col-12 about">
-          <h2>Обо мнe</h2>
+          <h2>Обо мне</h2>
           <p> 
             Являюсь техническим руководителем продукта. Занимаюсь выстраиванием деливери процессов и развитием команды.<br>
             Отвечаю за работу команд разработки, тестирования, системного анализа и архитектуры.<br>
@@ -82,7 +82,7 @@
                   <div class="event-date badge bg-dark">2022</div>
                   <h5 class="pt-2">Samokat.tech</h5>
                   <p class="text-muted">
-                    <i>Tech Lead</i><br>
+                    <i>Cluster Tech Lead</i><br>
                     Организация работы фронтенд и бэкенд разработки, тестирования и системного анализа.
                     Отвечаю за создание новых продуктов, а также за соблюдение качества и сроков. 
                   </p>
@@ -96,54 +96,51 @@
   </section>
   <section id="projects" class="edu-area section-gap">
     <div class="container">
-      <div class="row align-items-center justify-content-between">
-        <div class="col-12 projects">
-          <h2>Основные проекты</h2>
+      <div class="d-flex align-items-center justify-content-between pb-3 projects">
+        <h2>Основные проекты</h2>
+        <div class="cards-nav d-none d-md-flex">
+          <button class="cards-btn" type="button" data-cards-target="projectsScroll" data-cards-dir="prev" aria-label="Предыдущие проекты">&#8592;</button>
+          <button class="cards-btn" type="button" data-cards-target="projectsScroll" data-cards-dir="next" aria-label="Следующие проекты">&#8594;</button>
         </div>
       </div>
-      <div class="row">
-        <div class="col-lg-3 col-md-12 pb-3">
-          <div class="card"> <img class="card-img-top" src="/images/base/subflow.webp" alt="subflow">
-            <div class="card-body">
-              <h5 class="card-title">SubFlow</h5>
-              <p class="card-text">SubFlow — Telegram Mini App, который позволяет монетизировать Telegram-канал за 5 минут.</p>
-            </div>
+      <div class="cards-scroll" id="projectsScroll">
+        <div class="card card-slide">
+          <img class="card-img-top" src="/images/base/subflow.webp" alt="SubFlow" loading="lazy" decoding="async">
+          <div class="card-body">
+            <h5 class="card-title">SubFlow</h5>
+            <p class="card-text">SubFlow — Telegram Mini App, который позволяет монетизировать Telegram-канал за 5 минут.</p>
           </div>
         </div>
-        <div class="col-lg-3 col-md-12 pb-3">
-          <div class="card"> <img class="card-img-top" src="/images/base/troika.webp" alt="troika">
-            <div class="card-body">
-              <h5 class="card-title">Виртуальная Тройка</h5>
-              <p class="card-text">Проездной в вашем смартфоне. Больше никаких лишних пластиковых карт и очереди за
-                билетами.</p>
-            </div>
+        <div class="card card-slide">
+          <img class="card-img-top" src="/images/base/troika.webp" alt="Виртуальная Тройка" loading="lazy" decoding="async">
+          <div class="card-body">
+            <h5 class="card-title">Виртуальная Тройка</h5>
+            <p class="card-text">Проездной в вашем смартфоне. Больше никаких лишних пластиковых карт и очередей за
+              билетами.</p>
           </div>
         </div>
-        <div class="col-lg-3 col-md-12 pb-3">
-          <div class="card"> <img class="card-img-top" src="/images/base/covid.webp" alt="troika">
-            <div class="card-body">
-              <h5 class="card-title">CovidQrWallet</h5>
-              <p class="card-text">Cертификат о вакцинации Covid-19 в вашем Apple Wallet. Больше тебе не придется
-                тратить время, чтобы найти свой QR.</p>
-            </div>
+        <div class="card card-slide">
+          <img class="card-img-top" src="/images/base/covid.webp" alt="CovidQrWallet" loading="lazy" decoding="async">
+          <div class="card-body">
+            <h5 class="card-title">CovidQrWallet</h5>
+            <p class="card-text">Cертификат о вакцинации Covid-19 в вашем Apple Wallet. Больше не придется тратить
+              время, чтобы найти свой QR.</p>
           </div>
         </div>
-        <div class="col-lg-3 col-md-12 pb-3">
-          <div class="card"> <img class="card-img-top" src="/images/base/storysdk.webp" alt="troika">
-            <div class="card-body">
-              <h5 class="card-title">StorySDK</h5>
-              <p class="card-text">Создавайте и добавляйте сторис в ваши приложения. Истории создаются в пару кликов в
-                веб-редакторе.</p>
-            </div>
+        <div class="card card-slide">
+          <img class="card-img-top" src="/images/base/storysdk.webp" alt="StorySDK" loading="lazy" decoding="async">
+          <div class="card-body">
+            <h5 class="card-title">StorySDK</h5>
+            <p class="card-text">Создавайте и добавляйте сторис в ваши приложения. Истории создаются в пару кликов в
+              веб-редакторе.</p>
           </div>
         </div>
-        <div class="col-lg-3 col-md-12 pb-3">
-          <div class="card"> <img class="card-img-top" src="/images/base/siter.webp" alt="troika">
-            <div class="card-body">
-              <h5 class="card-title">Siter</h5>
-              <p class="card-text">Проектируйте в облаке и создавайте новые веб-сайты без каких-либо навыков
-                программирования.</p>
-            </div>
+        <div class="card card-slide">
+          <img class="card-img-top" src="/images/base/siter.webp" alt="Siter" loading="lazy" decoding="async">
+          <div class="card-body">
+            <h5 class="card-title">Siter</h5>
+            <p class="card-text">Проектируйте в облаке и создавайте новые веб-сайты без каких-либо навыков
+              программирования.</p>
           </div>
         </div>
       </div>
@@ -151,95 +148,62 @@
   </section>
   <section id="edu" class="services-area section-gap first">
     <div class="container">
-      <div class="row align-items-center justify-content-between">
-        <div class="col-12 edu">
-          <h2>Обучение</h2>
+      <div class="d-flex align-items-center justify-content-between pb-3 edu">
+        <h2>Обучение</h2>
+        <div class="cards-nav d-none d-md-flex">
+          <button class="cards-btn black" type="button" data-cards-target="eduScroll" data-cards-dir="prev" aria-label="Предыдущие курсы">&#8592;</button>
+          <button class="cards-btn black" type="button" data-cards-target="eduScroll" data-cards-dir="next" aria-label="Следующие курсы">&#8594;</button>
         </div>
       </div>
-      <div class="row">
-        <div class="slider" data-slider="chiefslider">
-          <div class="slider__container">
-            <div class="slider__wrapper">
-              <div class="slider__items">
-                <div class="slider__item">
-                  <div class="slider__item-container">
-                    <div class="slider__item-content">
-                      <div class="slider__content_header">
-                        <img class="slider__content_img" src="/images/base/edu2.webp">
-                      </div>
-                      <h2 class="slider__content_title">Оптимизация Ruby/Rails-приложений</h2>
-                      <div class="slider__content_footer">
-                        <span class="slider__content_author">Thinknetica</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="slider__item">
-                  <div class="slider__item-container">
-                    <div class="slider__item-content">
-                      <div class="slider__content_header">
-                        <img class="slider__content_img" src="/images/base/edu1.webp">
-                      </div>
-                      <h2 class="slider__content_title">Микросервисная архитектура</h2>
-                      <div class="slider__content_footer">
-                        <span class="slider__content_author">Microarch</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="slider__item">
-                  <div class="slider__item-container">
-                    <div class="slider__item-content">
-                      <div class="slider__content_header">
-                        <img class="slider__content_img" src="/images/base/edu3.webp">
-                      </div>
-                      <h2 class="slider__content_title">Безопасность Rails-приложений</h2>
-                      <div class="slider__content_footer">
-                        <span class="slider__content_author">Thinknetica</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="slider__item">
-                  <div class="slider__item-container">
-                    <div class="slider__item-content">
-                      <div class="slider__content_header">
-                        <img class="slider__content_img" src="/images/base/edu4.webp">
-                      </div>
-                      <h2 class="slider__content_title">Разработка на GO</h2>
-                      <div class="slider__content_footer">
-                        <span class="slider__content_author">Thinknetica</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="slider__item">
-                  <div class="slider__item-container">
-                    <div class="slider__item-content">
-                      <div class="slider__content_header">
-                        <img class="slider__content_img" src="/images/base/edu5.webp">
-                      </div>
-                      <h2 class="slider__content_title">5 soft skills проджект-менеджера в IT</h2>
-                      <div class="slider__content_footer">
-                        <span class="slider__content_author">Skillsetter</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <div class="cards-scroll" id="eduScroll">
+        <div class="card card-slide">
+          <img class="card-img-top" src="/images/base/edu2.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <div class="card-body">
+            <h5 class="card-title">Оптимизация Ruby/Rails-приложений</h5>
+            <p class="card-subtitle text-muted mb-0">Thinknetica</p>
           </div>
-          <a href="#" class="slider__control" data-slide="prev"></a>
-          <a href="#" class="slider__control" data-slide="next"></a>
-          <ol class="slider__indicators">
-            <li data-slide-to="1"></li>
-            <li data-slide-to="2"></li>
-            <li data-slide-to="3"></li>
-            <li data-slide-to="4"></li>
-            <li data-slide-to="5"></li>
-          </ol>
+        </div>
+        <div class="card card-slide">
+          <img class="card-img-top" src="/images/base/edu1.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <div class="card-body">
+            <h5 class="card-title">Микросервисная архитектура</h5>
+            <p class="card-subtitle text-muted mb-0">Microarch</p>
+          </div>
+        </div>
+        <div class="card card-slide">
+          <img class="card-img-top" src="/images/base/edu3.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <div class="card-body">
+            <h5 class="card-title">Безопасность Rails-приложений</h5>
+            <p class="card-subtitle text-muted mb-0">Thinknetica</p>
+          </div>
+        </div>
+        <div class="card card-slide">
+          <img class="card-img-top" src="/images/base/edu4.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <div class="card-body">
+            <h5 class="card-title">Разработка на GO</h5>
+            <p class="card-subtitle text-muted mb-0">Thinknetica</p>
+          </div>
+        </div>
+        <div class="card card-slide">
+          <img class="card-img-top" src="/images/base/edu5.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <div class="card-body">
+            <h5 class="card-title">5 soft skills проджект-менеджера в IT</h5>
+            <p class="card-subtitle text-muted mb-0">Skillsetter</p>
+          </div>
         </div>
       </div>
+      <script>
+        (function () {
+          document.querySelectorAll('[data-cards-target]').forEach(function (btn) {
+            var scroller = document.getElementById(btn.dataset.cardsTarget);
+            if (!scroller) return;
+            btn.addEventListener('click', function () {
+              var dir = btn.dataset.cardsDir === 'prev' ? -1 : 1;
+              scroller.scrollBy({ left: 320 * dir, behavior: 'smooth' });
+            });
+          });
+        })();
+      </script>
     </div>
   </section>
 </div>
@@ -247,7 +211,5 @@
 
 {{ define "js" }}
 {{ $bg := resources.Get "js/bg.js" | minify | fingerprint }}
-{{ $slider := resources.Get "js/slider.js" | minify | fingerprint }}
-{{ $indexJS := slice $bg $slider | resources.Concat "index.js" }}
-<script src="{{ $indexJS.Permalink }}"></script>
+<script src="{{ $bg.Permalink }}"></script>
 {{ end }}

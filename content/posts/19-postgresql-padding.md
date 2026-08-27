@@ -5,7 +5,7 @@ description: "Каждая таблица в PostgreSQL — это не прос
 summary: "Каждая таблица в PostgreSQL — это не просто логическая структура, а сложный физический \"пазл\" из 8-КБ страниц, где порядок байтов решает всё: от скорости запросов до размера диска."
 image: "/images/posts/abba.png"
 date: 2025-08-10
-tags: [postgresql sql]
+tags: [postgresql, sql, performance]
 ---
 
 ![Оптимизация хранения данных в PostgreSQL](/images/posts/abba.png "Оптимизация хранения данных в PostgreSQL")

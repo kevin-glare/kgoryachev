@@ -5,7 +5,7 @@ description: "Небольшой гайд как в RubyOnRails при помо�
 summary: "Небольшой гайд как в RubyOnRails при помощи ActiveRecord осуществлять поиск по JSON полям. Также будет приведен пример, как сделать поиск по вложенным JSON полям. Небольшая шпаргалка на все случаи жизни."
 image: "/images/posts/json-rails.png"
 date: 2021-09-27
-tags: [json rails ruby]
+tags: [json, rails, ruby]
 ---
 
 ![ActiveRecord поиск по JSON полям](/images/posts/json-rails.png "ActiveRecord поиск по JSON полям")

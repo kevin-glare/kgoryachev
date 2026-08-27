@@ -5,7 +5,7 @@ description: "Firebase Cloud Messaging, ранее известная как Goo
 summary: "Firebase Cloud Messaging, ранее известная как Google Cloud Messaging, является кроссплатформенным облачным решением для отправки сообщений и уведомлений."
 image: "/images/posts/firebase.png"
 date: 2021-09-28
-tags: [firebase google ruby]
+tags: [firebase, google, ruby]
 ---
 
 ![Отправка push уведомлений через Firebase Cloud Messaging](/images/posts/firebase.png "Отправка push уведомлений через Firebase Cloud Messaging")

@@ -1,0 +1,89 @@
+{{ if .IsHome }}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": {{ printf "%s#person" site.BaseURL }},
+        "name": {{ site.Params.author }},
+        "givenName": "Константин",
+        "familyName": "Горячев",
+        "url": {{ site.BaseURL }},
+        "image": {{ "images/base/ava.webp" | absURL }},
+        "jobTitle": "CTO | Tech Lead | Senior Web Software Engineer",
+        "email": {{ printf "mailto:%s" site.Params.email }},
+        "sameAs": [
+          {{ site.Params.telegram }},
+          {{ site.Params.github }}
+        ],
+        "knowsAbout": [
+          "Ruby", "Go", "Elixir", "TypeScript", "Ruby on Rails", "Kafka", "PostgreSQL",
+          "микросервисы", "финтех", "высоконагруженные системы", "наблюдаемость"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": {{ printf "%s#website" site.BaseURL }},
+        "url": {{ site.BaseURL }},
+        "name": {{ site.Title }},
+        "description": {{ site.Params.description }},
+        "inLanguage": "ru-RU",
+        "publisher": { "@id": {{ printf "%s#person" site.BaseURL }} }
+      }
+    ]
+  }
+</script>
+{{ else if and .IsPage (eq .Section "posts") }}
+{{ $keywords := slice }}
+{{ range .GetTerms "tags" }}
+{{ $keywords = $keywords | append .LinkTitle }}
+{{ end }}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": {{ printf "%s#article" .Permalink }},
+        "mainEntityOfPage": {{ .Permalink }},
+        "url": {{ .Permalink }},
+        "headline": {{ .Title }},
+        "description": {{ .Summary | plainify | chomp }},
+        "image": {{ (.Params.image | default site.Params.ogImage) | absURL }},
+        "datePublished": {{ .Date.Format "2006-01-02T15:04:05Z07:00" }},
+        "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }},
+        "inLanguage": "ru-RU",
+        "wordCount": {{ .WordCount }},
+        {{ with $keywords }}"keywords": [{{ range $i, $k := $keywords }}{{ if $i }}, {{ end }}{{ $k }}{{ end }}],{{ end }}
+        "author": { "@id": {{ printf "%s#person" site.BaseURL }} },
+        "publisher": { "@id": {{ printf "%s#person" site.BaseURL }} },
+        "isPartOf": { "@id": {{ printf "%s#website" site.BaseURL }} }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Главная",
+            "item": {{ site.BaseURL }}
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Статьи",
+            "item": {{ "posts/" | absURL }}
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": {{ .Title }},
+            "item": {{ .Permalink }}
+          }
+        ]
+      }
+    ]
+  }
+</script>
+{{ end }}

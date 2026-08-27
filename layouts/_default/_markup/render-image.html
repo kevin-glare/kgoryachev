@@ -1,0 +1,9 @@
+{{- $isHero := eq .Destination .Page.Params.image -}}
+<img src="{{ .Destination | safeURL }}"
+  alt="{{ .Text }}"
+  {{- with .Title }} title="{{ . }}"{{- end }}
+  {{- if and (hasPrefix .Destination "/") (fileExists (printf "static%s" .Destination)) }}
+  {{- with imageConfig (printf "static%s" .Destination) }} width="{{ .Width }}" height="{{ .Height }}"{{- end }}
+  {{- end }}
+  {{- if $isHero }} fetchpriority="high"{{ else }} loading="lazy"{{ end }}
+  decoding="async">

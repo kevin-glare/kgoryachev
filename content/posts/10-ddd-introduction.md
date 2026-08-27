@@ -5,7 +5,7 @@ description: "Предметно-ориентированное проектир
 summary: "Предметно-ориентированное проектирование - это набор правил, который позволяет принимать правильные проектные решения. Основная цель DDD - это борьба со сложностью бизнес-процессов."
 image: "/images/posts/ddd.jpg"
 date: 2021-11-20
-tags: [architectury]
+tags: [architecture, ddd]
 ---
 
 ![Domain-Driven Design. Введение.](/images/posts/ddd.jpg "Domain-Driven Design. Введение.")

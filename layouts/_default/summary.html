@@ -1,16 +1,23 @@
 <div class="col-sm-4">
-  <div class="post card">
+  <div class="post card h-100">
     <a href="{{ .Permalink }}">
-      {{ if .Params.image }}
-        <div class="post-img d-flex justify-content-center align-items-center">
-          <img src="{{ .Params.image }}" alt="{{ .Title }}" class="card-img-top img-fluid">
-        </div>
+      {{ with .Params.image }}
+      <div class="post-img d-flex justify-content-center align-items-center">
+        <img src="{{ . }}" alt="" aria-hidden="true" class="card-img-top img-fluid" loading="lazy" decoding="async">
+      </div>
       {{ end }}
       <div class="card-body">
         <h5 class="card-title">{{ .Title }}</h5>
-        <p class="card-subtitle mb-2 text-muted">{{ .Date.Format "Jan 2, 2006" }}</p>
-        <p class="card-text">{{ .Summary }}<p>
+        <p class="card-subtitle mb-2 text-muted">{{ .Date.Format "02.01.2006" }}</p>
+        <p class="card-text">{{ .Summary | plainify }}</p>
       </div>
     </a>
+    {{ with .GetTerms "tags" }}
+    <div class="card-footer bg-white border-top-0 pt-0">
+      {{ range . }}
+      <a class="badge rounded-pill bg-secondary text-decoration-none" href="{{ .Permalink }}">#{{ .LinkTitle }}</a>
+      {{ end }}
+    </div>
+    {{ end }}
   </div>
 </div>

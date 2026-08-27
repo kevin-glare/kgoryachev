@@ -5,7 +5,7 @@ description: "Узнаем, что такое Prometheus, какие бываю�
 summary: "Узнаем, что такое Prometheus, какие бывают типы метрик и как выбирать их под задачи мониторинга и SLO/SLA. Также разберем основные функции PromQL, типовые подходы и практики, как не допускать ошибок с лейблами, частотой скрэпа и алертами."
 image: "/images/posts/prometheus.png"
 date: 2025-12-21
-tags: [prometheus sre]
+tags: [prometheus, monitoring, sre]
 ---
 
 ![Prometheus метрики и функции](/images/posts/prometheus.png "Prometheus метрики и функции")

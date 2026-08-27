@@ -5,7 +5,7 @@ description: "Метод 'муда, мури, мура' является сво�
 summary: "Метод 'муда, мури, мура' является своеобразной концепцией и философией управления проектами. Он был предложен Хироши Кохно, японским инженером и пионером в области управления качеством и проектами, и используется в практике Итто Хеджи."
 image: "/images/posts/mmm.jpg"
 date: 2023-09-30
-tags: [management productivity]
+tags: [management, productivity, lean]
 ---
 
 ![Muda, Muri, Mura](/images/posts/mmm.jpg "Muda, Muri, Mura")

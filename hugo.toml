@@ -1,7 +1,48 @@
 baseURL = 'https://kgoryachev.ru'
-languageCode = 'ru-RU'
+locale = 'ru-RU'
+languageName = 'Русский'
 title = 'Горячев Константин'
-draft=false
+
+enableRobotsTXT = true
+enableGitInfo = true
+
+[pagination]
+  pagerSize = 9
+
+# Похожие статьи: индекс по тегам
+[related]
+  includeNewer = true
+  threshold = 0
+  toLower = false
+[[related.indices]]
+  name = 'tags'
+  weight = 100
+
+# Используем только теги: пустая таксономия categories больше не генерируется
+[taxonomies]
+  tag = 'tags'
+
+[params]
+  author = 'Горячев Константин'
+  description = 'CTO | Tech Lead | Senior Web Software Engineer. Личный сайт: проекты, опыт и статьи о разработке.'
+  telegram = 'https://t.me/kgoryachev'
+  github = 'https://github.com/kevin-glare'
+  email = 'kevin.glare@gmail.com'
+  ogImage = '/images/base/og-cover.png'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    noClasses = false
+    style = 'github'
+
+[sitemap]
+  changefreq = 'weekly'
+  priority = 0.5
+  filename = 'sitemap.xml'
+
 [caches]
   [caches.assets]
     dir = ':resourceDir/_gen'

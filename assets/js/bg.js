@@ -240,9 +240,20 @@ function weightedRange(to, from, decimalPlaces, weightedRange, weightStrength)
 
 var particles
 (function(){
+	// Уважаем настройку "уменьшить движение" — анимация не запускается вовсе
+	if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+		var canvas = document.getElementById('projector');
+		if (canvas) { canvas.style.display = 'none'; }
+		return;
+	}
+
 	particles = new ParticleEngine('projector');
 	createjs.Ticker.addEventListener("tick", updateCanvas);
 	window.addEventListener('resize', resizeCanvas, false);
+	// Не тратим CPU/батарею, когда вкладка не видна
+	document.addEventListener('visibilitychange', function () {
+		createjs.Ticker.setPaused(document.hidden);
+	});
 
 	function updateCanvas(){
 		particles.render();

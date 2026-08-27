@@ -5,7 +5,7 @@ description: "Amazon предоставляет большой выбор веб
 summary: "Amazon предоставляет большой выбор веб-сервисов, которые мы можем дружить друг с другом, тем самым улучшая свой продукт. Сегодня я расскажу про CloudFront и S3, а также, как решить проблему с CORS."
 image: "/images/posts/cors-s3.jpg"
 date: 2022-08-13
-tags: [cors amazon cloudfront s3]
+tags: [cors, aws]
 ---
 
 ![CORS - Amazon CloudFront & S3](/images/posts/cors-s3.jpg "CORS - Amazon CloudFront & S3")

@@ -5,7 +5,7 @@ description: "Для генерации excel файлов мы чаще все�
 summary: "Для генерации excel файлов мы чаще всего используем roo или axlsx/caxlsx. Они прекрасно работают, имеют огромный функционал и активное комьюнити. Но иногда для счастья этого оказывается мало."
 image: "/images/posts/excel.png"
 date: 2023-02-28
-tags: [ruby excel]
+tags: [ruby, excel]
 ---
 
 ![Генерация больших excel файлов](/images/posts/excel.png "Генерация больших excel файлов")

@@ -1,44 +1,42 @@
 <nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top">
   <div class="container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Открыть меню">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        {{ $navUrl := .Permalink }}
-        {{ if not (eq $navUrl .Site.BaseURL) }}
-          {{ $navUrl = "/" }}
-        {{ end }}
         <li class="nav-item">
-          <a class="nav-link active" href={{ $navUrl }}>Главная</a>
+          <a class="nav-link{{ if .IsHome }} active{{ end }}"{{ if .IsHome }} aria-current="page"{{ end }} href="/">Главная</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href={{ $navUrl }}{{ "#about" }}>Обо мне</a>
+          <a class="nav-link" href="/#about">Обо мне</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href={{ $navUrl }}{{"#projects"}}>Проекты</a>
+          <a class="nav-link" href="/#projects">Проекты</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href={{ $navUrl }}{{"#edu"}}>Обучение</a>
+          <a class="nav-link" href="/#edu">Обучение</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/posts">Статьи</a> 
+          <a class="nav-link{{ if eq .Type `posts` }} active{{ end }}"{{ if eq .Type `posts` }} aria-current="page"{{ end }} href="/posts">Статьи</a>
         </li>
       </ul>
       <ul class="navbar-nav nav navbar-nav navbar-right list-group-horizontal">
-        <li class="nav-item"> <a class="nav-link" href="https://t.me/kgoryachev" target="_blank">
-          <img src="/images/base/tg.svg" class="icon"></a> 
+        <li class="nav-item"> <a class="nav-link" href="https://t.me/kgoryachev" target="_blank" rel="noopener"
+            aria-label="Telegram" title="Telegram">
+          <img src="/images/base/tg.svg" class="icon" alt="" aria-hidden="true"></a>
         </li>
-        <li class="nav-item"> 
-          <a class="nav-link" href="mailto:kevin.glare@gmail.com">
-            <img src="/images/base/mail.svg" class="icon">
-          </a> 
+        <li class="nav-item">
+          <a class="nav-link" href="mailto:kevin.glare@gmail.com" aria-label="Почта" title="Почта">
+            <img src="/images/base/mail.svg" class="icon" alt="" aria-hidden="true">
+          </a>
         </li>
-        <li class="nav-item"> 
-          <a class="nav-link" href="https://github.com/kevin-glare" target="_blank">
-            <img src="/images/base/gh.svg" class="icon">
-          </a> 
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/kevin-glare" target="_blank" rel="noopener"
+            aria-label="GitHub" title="GitHub">
+            <img src="/images/base/gh.svg" class="icon" alt="" aria-hidden="true">
+          </a>
         </li>
       </ul>
     </div>
