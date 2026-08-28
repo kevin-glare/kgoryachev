@@ -142,22 +142,5 @@
       });
     });
   });
-
-  // Кнопка "Копировать" у блоков кода
-  document.querySelectorAll('.highlight').forEach(function (block) {
-    var pre = block.querySelector('pre');
-    if (!pre) return;
-    var btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'copy-code';
-    btn.textContent = 'Копировать';
-    btn.addEventListener('click', function () {
-      copyToClipboard(pre.innerText).then(function () {
-        btn.textContent = 'Скопировано!';
-        setTimeout(function () { btn.textContent = 'Копировать'; }, 2000);
-      });
-    });
-    block.appendChild(btn);
-  });
 </script>
 {{ end }}

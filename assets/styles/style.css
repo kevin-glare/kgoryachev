@@ -128,6 +128,26 @@ h5.card-title a {
   color: #adb5bd;
 }
 
+/* На небольших экранах облако тегов — одна строка со свайпом */
+@media (max-width: 768px) {
+  .tag-cloud {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 0.25rem;
+  }
+
+  .tag-cloud::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tag-cloud-item {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+}
+
 .highlight pre {
   padding: 1rem;
 }
@@ -138,6 +158,7 @@ a.box {
 
 article img {
   max-width: 100%;
+  height: auto;
 }
 @media (max-width: 768px) {
   #content {
@@ -528,6 +549,32 @@ table th {
 /* Хлебные крошки на странице статьи */
 #post .breadcrumb {
   margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.8rem;
+}
+
+#post .breadcrumb-item a {
+  color: #6c757d;
+  text-decoration: none;
+}
+
+#post .breadcrumb-item a:hover {
+  color: #212529;
+  text-decoration: underline;
+}
+
+#post .breadcrumb-item.active {
+  color: #212529;
+  font-weight: 500;
+  max-width: 26rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#post .breadcrumb-item + .breadcrumb-item::before {
+  content: "›";
+  color: #adb5bd;
 }
 
 /* Единая карусель карточек: проекты и обучение */
@@ -746,6 +793,7 @@ table th {
 /* Картинки и разделители */
 #post article.content img {
   border-radius: 0.5rem;
+  object-fit: contain;
 }
 
 #post article.content hr {
@@ -827,4 +875,9 @@ table th {
 .cards-btn.black {
   border: 1px black solid;
   color: black;
+}
+
+.cards-btn.black:hover {
+  background: rgba(0, 0, 0, 0.08);
+  border-color: black;
 }
