@@ -69,8 +69,10 @@
   <link rel="stylesheet" href="{{ $bootstrap.Permalink }}">
   {{ $style := resources.Get "styles/style.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $style.Permalink }}">
+  {{ if and .IsPage (eq .Section "posts") }}
   {{ $syntax := resources.Get "styles/syntax.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $syntax.Permalink }}">
+  {{ end }}
   {{ block "css" . }}
   {{ end }}
 
