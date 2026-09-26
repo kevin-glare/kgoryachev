@@ -5,8 +5,13 @@ PWD=$(shell pwd)
 run:
 	hugo server --ignoreCache --disableFastRender --cleanDestinationDir
 
+# Локальная сборка без Метрики: окружение development (в отличие от прода в CI,
+# где HUGO_ENVIRONMENT=production). Прод-сборку локально: make build-prod.
 build:
-	hugo --gc --minify
+	hugo --gc --minify --environment development
+
+build-prod:
+	hugo --gc --minify --environment production
 
 # Перезапуск dev-сервера с чисткой артефактов.
 # Лечит "слетевшие стили"/ссылки на kgoryachev.ru в dev-режиме:
