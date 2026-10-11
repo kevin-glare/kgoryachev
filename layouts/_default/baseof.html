@@ -10,6 +10,7 @@
   <link rel="manifest" href="/images/base/site.webmanifest">
 
   {{ $title := .Title }}
+  {{ if eq .Kind "term" }}{{ $title = print "Статьи по тегу " $title }}{{ end }}
   {{ $description := .Description | default .Summary | default site.Params.description | plainify | chomp }}
   {{ $ogImage := .Params.image | default site.Params.ogImage }}
   {{ $ogImageAbs := $ogImage | absURL }}

@@ -119,11 +119,19 @@ h5.card-title a {
   text-decoration: none;
 }
 
+/* Текущий тег на его странице: клик сбрасывает фильтр */
+.tag-cloud-item.active {
+  background-color: #212529;
+  border-color: #212529;
+  color: #fff;
+}
+
 .tag-cloud-count {
   font-size: 0.75rem;
   color: #6c757d;
 }
 
+.tag-cloud-item.active .tag-cloud-count,
 .tag-cloud-item:hover .tag-cloud-count {
   color: #adb5bd;
 }

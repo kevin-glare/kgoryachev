@@ -1,20 +1,36 @@
 {{ define "main" }}
+{{ $isPostsList := eq .Kind "section" }}
+{{ $title := .Title }}
+{{ if eq .Kind "taxonomy" }}{{ $title = "Теги" }}{{ end }}
+{{ $crumb := $title }}
+{{ if eq .Kind "term" }}{{ $crumb = print "#" $title }}{{ $title = print "Статьи " $crumb }}{{ end }}
 <div id="post">
   <div class="container">
-    <h2 class="title">{{ .Title }}</h2>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Главная</a></li>
+        {{ if $isPostsList }}
+        <li class="breadcrumb-item active" aria-current="page">Статьи</li>
+        {{ else }}
+        <li class="breadcrumb-item"><a href="/posts/">Статьи</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ $crumb }}</li>
+        {{ end }}
+      </ol>
+    </nav>
+
+    <h2 class="title">{{ $title }}</h2>
 
     {{ $paginator := .Paginate .Pages }}
 
-    {{ if eq .Type "posts" }}
     {{ with .Site.Taxonomies.tags }}
     <div class="tag-cloud mb-4">
       {{ range .ByCount }}
-      <a class="tag-cloud-item" href="{{ .Page.Permalink }}">
+      {{ $isActive := eq $.Permalink .Page.Permalink }}
+      <a class="tag-cloud-item{{ if $isActive }} active{{ end }}" href="{{ if $isActive }}/posts/{{ else }}{{ .Page.Permalink }}{{ end }}"{{ if $isActive }} title="Сбросить фильтр — показать все статьи"{{ end }}>
         {{ .Page.LinkTitle }}<span class="tag-cloud-count">{{ .Count }}</span>
       </a>
       {{ end }}
     </div>
-    {{ end }}
     {{ end }}
 
     <div class="row">

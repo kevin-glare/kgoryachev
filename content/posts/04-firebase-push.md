@@ -11,10 +11,10 @@ tags: [firebase, google, ruby]
 ![Отправка push уведомлений через Firebase Cloud Messaging](/images/posts/firebase.png "Отправка push уведомлений через Firebase Cloud Messaging")
 
 ### Что такое Firebase Cloud Messaging?
-Firebase Cloud Messaging, ранее известная как Google Cloud Messaging, является кроссплатформенным облачным решением для сообщений и уведомлений для Android, iOS и веб-приложений, которое с 2021 года можно будет использовать бесплатно. 
+Firebase Cloud Messaging, ранее известная как Google Cloud Messaging, является кроссплатформенным облачным решением для отправки сообщений и уведомлений для Android, iOS и веб-приложений, которое можно использовать бесплатно. 
 
 ### Отправка ивента
-Первым делом необходимо сгенерировать JSON файл c ключами. Для этого перейдите в консоль Firebase и в разделе _Project Settings_ -> _Service Accounts_ -> _Firebase Admin SDK_ нажмите _GENERATE NEW PRIVATE KEY_.
+Первым делом необходимо сгенерировать JSON-файл с ключами. Для этого перейдите в консоль Firebase и в разделе _Project Settings_ → _Service Accounts_ → _Firebase Admin SDK_ нажмите _GENERATE NEW PRIVATE KEY_.
 
 Для отправки сообщения нам понадобится:
 1. URL для отправки сообщения
@@ -30,7 +30,7 @@ BASE_URL = "https://fcm.googleapis.com/v1/projects/#{FCM_PROJECT_ID}/messages:se
 
 Параметры сообщения:
 ```ruby
-# 1. PUSH_TOKEN_CLIENT - пуш токен с мобильного устройства
+# 1. PUSH_TOKEN_CLIENT — пуш-токен с мобильного устройства
 # 2. если нужно добавить кастомные параметры для iOS, то добавьте их 
 #    внутрь payload
 # 3. В message можно положить структуру notification c ключами title и 
@@ -58,7 +58,7 @@ def message
 end
 ```
 
-Для генерации токена, я использую гем _googleauth_:
+Для генерации токена я использую гем _googleauth_:
 ```ruby
 FCM_FILENAME = ENV['FCM_FILENAME'].freeze # имя json файла
 FCM_SCOPE = 'https://www.googleapis.com/auth/firebase.messaging'.freeze
@@ -70,7 +70,7 @@ authorizer = Google::Auth::ServiceAccountCredentials.make_creds(
 
 token = authorizer.fetch_access_token!
 token['access_token']
-# p.s. access_token имеет очень много точек в конце (758 шт), их можно # не обрезать.
+# p.s. access_token имеет очень много точек в конце (758 шт.), их можно не обрезать.
 ```
 
 В итоге у нас получается такой cURL:
@@ -105,12 +105,11 @@ curl --location --request POST 'https://fcm.googleapis.com/v1/projects/ingrid-io
 }
 ```
 
-##### Личные наблюдения:
-- Для отправки пушицы уведомления на андроид - можно все обернуть в ключ _"data"_ внутри объекта _"message"_;
-- Eсли добавить объект _"notification"_, то андроид автоматически покажет нотификацию пользователю (приложение не успеет распарсить объект уведомления и переделать пуш).
+##### Личные наблюдения
+- Для отправки пуш-уведомления на андроид — можно все обернуть в ключ _"data"_ внутри объекта _"message"_;
+- Если добавить объект _"notification"_, то андроид автоматически покажет нотификацию пользователю (приложение не успеет распарсить объект уведомления и переделать пуш).
 
-### Полезные ссылки:
-- [google-auth-library-ruby
-](https://github.com/googleapis/google-auth-library-ruby)
+### Полезные ссылки
+- [google-auth-library-ruby](https://github.com/googleapis/google-auth-library-ruby)
 - [Push уведомления в Android с помощью Firebase Cloud Messaging для начинающих](https://habr.com/ru/post/302002/)
 - [Создание запросов на отправку сервера приложений](https://firebase.google.com/docs/cloud-messaging/send-message?hl=ru)

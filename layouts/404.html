@@ -6,4 +6,16 @@
     <a class="btn btn-outline-light" href="/">Вернуться на главную</a>
   </div>
 </div>
+
+<script>
+  // Теги переехали с /tags/<slug>/ на /posts/tags/<slug>/.
+  // GitHub Pages не умеет серверные редиректы, поэтому перенаправляем со страницы 404.
+  (function () {
+    if (/\.(xml|rss|txt|json)$/.test(window.location.pathname)) return;
+    var m = window.location.pathname.match(/^\/tags\/(?:index\.html)?(.*)$/);
+    if (m) {
+      window.location.replace(m[1] ? '/posts/tags/' + m[1] : '/posts/');
+    }
+  })();
+</script>
 {{ end }}

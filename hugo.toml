@@ -6,6 +6,9 @@ title = 'Горячев Константин'
 enableRobotsTXT = true
 enableGitInfo = true
 
+# Страницу-список всех тегов (/tags/) не генерируем — теги доступны из облака
+disableKinds = ['taxonomy']
+
 [pagination]
   pagerSize = 9
 
@@ -21,6 +24,10 @@ enableGitInfo = true
 # Используем только теги: пустая таксономия categories больше не генерируется
 [taxonomies]
   tag = 'tags'
+
+# Страницы тегов живут внутри раздела статей: /posts/tags/<slug>/
+[permalinks]
+  tags = '/posts/tags/:slug/'
 
 [params]
   author = 'Горячев Константин'
