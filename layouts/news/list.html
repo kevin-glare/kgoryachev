@@ -1,4 +1,5 @@
 {{ define "main" }}
+{{ $months := slice "янв" "фев" "мар" "апр" "мая" "июн" "июл" "авг" "сен" "окт" "ноя" "дек" }}
 <div id="post">
   <div class="container">
     <nav aria-label="breadcrumb">
@@ -12,19 +13,20 @@
 
     {{ $paginator := .Paginate .Pages }}
 
-    <ul class="list-unstyled">
+    <div class="news-list">
       {{ range $paginator.Pages }}
-      <li class="news-item mb-4 pb-3 border-bottom">
-        <div class="post-meta text-muted mb-1">
-          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02.01.2006" }}</time>
+      <a class="news-row" href="{{ .RelPermalink }}">
+        <div class="news-date" aria-hidden="true">
+          <div class="day">{{ .Date.Format "02" }}</div>
+          <div class="month">{{ index $months (sub .Date.Month 1) }}</div>
         </div>
-        <h3 class="h5 mb-1">
-          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-        </h3>
-        <div class="text-muted">{{ .Description }}</div>
-      </li>
+        <div class="news-row-body">
+          <div class="news-row-title">{{ .Title }}</div>
+          <div class="news-row-desc">{{ .Description }}</div>
+        </div>
+      </a>
       {{ end }}
-    </ul>
+    </div>
 
     {{ if gt $paginator.TotalPages 1 }}
     <nav aria-label="Навигация по страницам">

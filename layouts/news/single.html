@@ -1,0 +1,79 @@
+{{ define "main" }}
+{{ $months := slice "янв" "фев" "мар" "апр" "мая" "июн" "июл" "авг" "сен" "окт" "ноя" "дек" }}
+<div id="post" class="news-single">
+  <main class="container mb-6">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Главная</a></li>
+        <li class="breadcrumb-item"><a href="/news/">Новости</a></li>
+        {{ $short := .Title }}
+        {{ with findRE `^Дайджест №[0-9]+` .Title 1 }}{{ $short = index . 0 }}{{ end }}
+        <li class="breadcrumb-item active" aria-current="page">{{ $short }}</li>
+      </ol>
+    </nav>
+
+    <h1 class="title post-title">{{ .Title }}</h1>
+
+    <div class="post-meta text-muted mb-3">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ index $months (sub .Date.Month 1) }} {{ .Date.Format "2006" }}</time>
+    </div>
+
+    <article class="content">
+      {{ .Content }}
+    </article>
+
+    {{ $myTags := slice }}
+    {{ range .GetTerms "tags" }}{{ $myTags = $myTags | append .LinkTitle }}{{ end }}
+    {{ $related := slice }}
+    {{ range where site.RegularPages "Type" "posts" }}
+    {{ $score := 0 }}
+    {{ range .GetTerms "tags" }}
+    {{ if in $myTags .LinkTitle }}{{ $score = add $score 1 }}{{ end }}
+    {{ end }}
+    {{ if gt $score 0 }}{{ $related = $related | append (dict "page" . "score" $score) }}{{ end }}
+    {{ end }}
+    {{ $scored := sort $related "score" "desc" }}
+    {{ $final := slice }}
+    {{ range first 3 $scored }}{{ $final = $final | append .page }}{{ end }}
+    {{ if lt (len $final) 3 }}
+    {{ range where site.RegularPages "Type" "posts" | first 3 }}
+    {{ if not (in $final .) }}{{ if lt (len $final) 3 }}{{ $final = $final | append . }}{{ end }}{{ end }}
+    {{ end }}
+    {{ end }}
+    {{ with $final }}
+    <div class="related my-4">
+      <h3 class="h5 mb-3">Читайте также</h3>
+      <ul class="list-unstyled">
+        {{ range . }}
+        <li class="mb-2">
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          <span class="text-muted small ms-1">{{ .Date.Format "02.01.2006" }}</span>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+
+    <div class="card bg-dark text-white cta my-4">
+      <div class="card-body d-flex align-items-center gap-3">
+        <img src="/images/base/tg.svg" class="icon" alt="" aria-hidden="true" width="36" height="36">
+        <div>
+          Обсудить выпуск, задать вопрос или предложить тему —
+          <a class="text-white text-decoration-underline" href="{{ site.Params.telegram }}" target="_blank" rel="noopener">напишите мне в Telegram</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="container content">
+    <ul class="post-nav list-unstyled">
+      {{ with .PrevInSection }}
+      <li>Предыдущий выпуск: <a class="previous" href="{{ .Permalink }}">{{ .Title }}</a></li>
+      {{ end }}
+      {{ with .NextInSection }}
+      <li>Следующий выпуск: <a class="next" href="{{ .Permalink }}">{{ .Title }}</a></li>
+      {{ end }}
+    </ul>
+  </div>
+</div>
+{{ end }}

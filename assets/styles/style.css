@@ -906,3 +906,111 @@ h3.card-title a {
   letter-spacing: 2px;
   margin-bottom: 0;
 }
+
+/* ===== Новости ===== */
+
+/* Список выпусков: дата-бейдж слева, заголовок и описание справа */
+.news-list {
+  border-top: 1px solid #dee2e6;
+}
+
+.news-row {
+  display: flex;
+  gap: 1.25rem;
+  align-items: baseline;
+  padding: 1rem 0.75rem;
+  border-bottom: 1px solid #dee2e6;
+  text-decoration: none;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.news-row:hover {
+  background-color: #f8f9fa;
+}
+
+.news-date {
+  flex: 0 0 3rem;
+  text-align: center;
+  line-height: 1.15;
+}
+
+.news-date .day {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #212529;
+}
+
+.news-date .month {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6c757d;
+}
+
+.news-row-body {
+  min-width: 0;
+}
+
+.news-row-title {
+  color: #212529;
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  margin-bottom: 0.3rem;
+}
+
+.news-row:hover .news-row-title {
+  text-decoration: underline;
+}
+
+.news-row-desc {
+  color: #6c757d;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Страница выпуска: вводка как лид, пункты разделены линейкой */
+.news-single article.content > p:first-child {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #495057;
+  border-left: 3px solid #212529;
+  padding-left: 1rem;
+  margin-bottom: 2rem;
+}
+
+.news-single article.content h3 {
+  border-top: 1px solid #dee2e6;
+  padding-top: 1.6rem;
+  margin-top: 1.6rem;
+}
+
+/* Ссылка на источник: пилюля со стрелкой, в стиле облака тегов */
+.news-single article.content p > a:only-child {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+  padding: 0.2rem 0.85rem;
+  border: 1px solid #212529;
+  border-radius: 50rem;
+  font-size: 0.85rem;
+  color: #212529;
+  text-decoration: none;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.news-single article.content p > a:only-child::after {
+  content: "↗";
+  font-size: 0.8em;
+}
+
+.news-single article.content p > a:only-child:hover {
+  background-color: #212529;
+  color: #fff;
+}
