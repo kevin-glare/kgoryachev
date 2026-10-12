@@ -13,7 +13,7 @@
   {{ if eq .Kind "term" }}{{ $title = print "Статьи по тегу " $title }}{{ end }}
   {{ $description := .Description | default .Summary | default site.Params.description | plainify | chomp }}
   {{ $ogImage := .Params.image | default site.Params.ogImage }}
-  {{ $ogImageAbs := $ogImage | absURL }}
+  {{ if eq .Type "news" }}{{ $ogImage = "" }}{{ end }}
 
   {{ if .IsHome }}
   <title>{{ site.Title }} — CTO | Tech Lead | Senior Web Software Engineer</title>
@@ -31,11 +31,13 @@
   <meta property="og:site_name" content="{{ site.Title }}">
   <meta property="og:locale" content="ru_RU">
   <meta property="og:url" content="{{ .Permalink }}">
-  <meta property="og:image" content="{{ $ogImageAbs }}">
-  {{ if and (hasPrefix $ogImage "/") (fileExists (printf "static%s" $ogImage)) }}
-  {{ with imageConfig (printf "static%s" $ogImage) }}
+  {{ with $ogImage }}
+  <meta property="og:image" content="{{ . | absURL }}">
+  {{ if and (hasPrefix . "/") (fileExists (printf "static%s" .)) }}
+  {{ with imageConfig (printf "static%s" .) }}
   <meta property="og:image:width" content="{{ .Width }}">
   <meta property="og:image:height" content="{{ .Height }}">
+  {{ end }}
   {{ end }}
   {{ end }}
 
@@ -59,7 +61,9 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ if .IsHome }}{{ site.Title }} — CTO | Tech Lead | Senior Web Software Engineer{{ else }}{{ $title }} | {{ site.Title }}{{ end }}">
   <meta name="twitter:description" content="{{ $description }}">
-  <meta name="twitter:image" content="{{ $ogImageAbs }}">
+  {{ with $ogImage }}
+  <meta name="twitter:image" content="{{ . | absURL }}">
+  {{ end }}
 
   <link rel="canonical" href="{{ .Permalink }}">
 

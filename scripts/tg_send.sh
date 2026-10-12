@@ -67,9 +67,9 @@ if [[ "$(head -1 "$FILE")" == "---" ]]; then
       if (heading == "") return
       if (match(link, /\((https?:\/\/[^)]+)\)/)) {
         url = substr(link, RSTART + 1, RLENGTH - 2)
-        items = items "<b><a href=\"" url "\">" heading "</a></b>\n"
+        items = items "<a href=\"" url "\">" heading "</a>\n"
       } else {
-        items = items "<b>" heading "</b>\n"
+        items = items heading "\n"
       }
       if (body != "") items = items trim(body)
       items = items "\v"

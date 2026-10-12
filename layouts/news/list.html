@@ -9,9 +9,6 @@
     </nav>
 
     <h2 class="title">Новости</h2>
-    {{ with .Description }}
-    <p class="text-muted">{{ . }}</p>
-    {{ end }}
 
     {{ $paginator := .Paginate .Pages }}
 
