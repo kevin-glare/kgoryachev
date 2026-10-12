@@ -12,4 +12,7 @@ hugo.linux
 # Temporary lock file while building
 /.hugo_build.lock
 
+# Токен Telegram-бота и chat id канала
+/.env
+
 .DS_Store

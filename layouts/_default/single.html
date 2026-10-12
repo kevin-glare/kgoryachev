@@ -1,10 +1,13 @@
 {{ define "main" }}
+{{ $sectionURL := "/posts/" }}
+{{ $sectionTitle := "Статьи" }}
+{{ if eq .Type "news" }}{{ $sectionURL = "/news/" }}{{ $sectionTitle = "Новости" }}{{ end }}
 <div id="post">
   <main class="container mb-6">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">Главная</a></li>
-        <li class="breadcrumb-item"><a href="/posts/">Статьи</a></li>
+        <li class="breadcrumb-item"><a href="{{ $sectionURL }}">{{ $sectionTitle }}</a></li>
         <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
       </ol>
     </nav>
@@ -93,10 +96,10 @@
   <div class="container content">
     <ul class="post-nav list-unstyled">
       {{ with .PrevInSection }}
-      <li>Предыдущая статья: <a class="previous" href="{{ .Permalink }}">{{ .Title }}</a></li>
+      <li>{{ if eq .Type "news" }}Предыдущий выпуск{{ else }}Предыдущая статья{{ end }}: <a class="previous" href="{{ .Permalink }}">{{ .Title }}</a></li>
       {{ end }}
       {{ with .NextInSection }}
-      <li>Следующая статья: <a class="next" href="{{ .Permalink }}">{{ .Title }}</a></li>
+      <li>{{ if eq .Type "news" }}Следующий выпуск{{ else }}Следующая статья{{ end }}: <a class="next" href="{{ .Permalink }}">{{ .Title }}</a></li>
       {{ end }}
     </ul>
   </div>

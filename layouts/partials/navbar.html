@@ -21,6 +21,9 @@
         <li class="nav-item">
           <a class="nav-link{{ if eq .Type `posts` }} active{{ end }}"{{ if eq .Type `posts` }} aria-current="page"{{ end }} href="/posts">Статьи</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link{{ if eq .Type `news` }} active{{ end }}"{{ if eq .Type `news` }} aria-current="page"{{ end }} href="/news">Новости</a>
+        </li>
       </ul>
       <ul class="navbar-nav nav navbar-nav navbar-right list-group-horizontal">
         <li class="nav-item"> <a class="nav-link" href="https://t.me/kgoryachev" target="_blank" rel="noopener"
