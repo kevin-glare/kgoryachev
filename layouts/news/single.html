@@ -7,7 +7,8 @@
         <li class="breadcrumb-item"><a href="/">Главная</a></li>
         <li class="breadcrumb-item"><a href="/news/">Новости</a></li>
         {{ $short := .Title }}
-        {{ with findRE `^Дайджест [^:]+` .Title 1 }}{{ $short = index . 0 }}{{ end }}
+        {{ with findRE `^[^:]+` .Title 1 }}{{ $short = index . 0 }}{{ end }}
+        {{ if gt (len $short) 40 }}{{ $short = truncate 37 $short }}{{ end }}
         <li class="breadcrumb-item active" aria-current="page">{{ $short }}</li>
       </ol>
     </nav>
