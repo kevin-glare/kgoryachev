@@ -95,7 +95,7 @@ if [[ "$(head -1 "$FILE")" == "---" ]]; then
     { intro = intro $0 "\n" }
     END {
       flushitem()
-      sub(/^Дайджест №[0-9]+:[ \t]*/, "", title)
+      sub(/^Дайджест [^:]+:[ \t]*/, "", title)
       out = "<b>" title "</b>\n\n"
       intro = trim(intro)
       if (intro != "") out = out intro "\v"

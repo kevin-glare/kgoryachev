@@ -1,5 +1,5 @@
 ---
-title: "Новости за {{ dateFormat "02.01.2006" .Date }}"
+title: "Дайджест за {{ dateFormat "02.01.2006" .Date }}: короткая суть выпуска"
 date: {{ .Date }}
 draft: true
 description: ""

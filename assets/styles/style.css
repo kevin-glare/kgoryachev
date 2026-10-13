@@ -917,7 +917,7 @@ h3.card-title a {
 .news-row {
   display: flex;
   gap: 1.25rem;
-  align-items: baseline;
+  align-items: center;
   padding: 1rem 0.75rem;
   border-bottom: 1px solid #dee2e6;
   text-decoration: none;

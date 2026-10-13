@@ -1,5 +1,5 @@
 {{ define "main" }}
-{{ $months := slice "янв" "фев" "мар" "апр" "мая" "июн" "июл" "авг" "сен" "окт" "ноя" "дек" }}
+{{ $months := slice "января" "февраля" "марта" "апреля" "мая" "июня" "июля" "августа" "сентября" "октября" "ноября" "декабря" }}
 <div id="post" class="news-single">
   <main class="container mb-6">
     <nav aria-label="breadcrumb">
@@ -7,7 +7,7 @@
         <li class="breadcrumb-item"><a href="/">Главная</a></li>
         <li class="breadcrumb-item"><a href="/news/">Новости</a></li>
         {{ $short := .Title }}
-        {{ with findRE `^Дайджест №[0-9]+` .Title 1 }}{{ $short = index . 0 }}{{ end }}
+        {{ with findRE `^Дайджест [^:]+` .Title 1 }}{{ $short = index . 0 }}{{ end }}
         <li class="breadcrumb-item active" aria-current="page">{{ $short }}</li>
       </ol>
     </nav>
@@ -15,7 +15,7 @@
     <h1 class="title post-title">{{ .Title }}</h1>
 
     <div class="post-meta text-muted mb-3">
-      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ index $months (sub .Date.Month 1) }} {{ .Date.Format "2006" }}</time>
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02" }} {{ index $months (sub .Date.Month 1) }} {{ .Date.Format "2006" }}</time>
     </div>
 
     <article class="content">
