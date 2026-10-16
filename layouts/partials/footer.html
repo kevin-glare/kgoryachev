@@ -1,11 +1,19 @@
-<footer class="site-footer">
-  <div class="container footer-row">
-    <div class="footer-social">
-      <a class="icon-btn" href="https://t.me/kgoryachev" target="_blank" rel="noopener" aria-label="Telegram" title="Telegram"><img src="/images/base/tg.svg" class="icon" alt="" aria-hidden="true"></a>
-      <a class="icon-btn" href="mailto:kevin.glare@gmail.com" aria-label="Почта" title="Почта"><img src="/images/base/mail.svg" class="icon" alt="" aria-hidden="true"></a>
-      <a class="icon-btn" href="https://github.com/kevin-glare" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><img src="/images/base/gh.svg" class="icon" alt="" aria-hidden="true"></a>
-      <a class="icon-btn" href="{{ "index.xml" | absURL }}" aria-label="RSS-лента" title="RSS-лента"><img src="/images/base/rss.svg" class="icon" alt="" aria-hidden="true"></a>
+<footer class="footer-area section-gap">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 col-md-12">
+        <div class="footer-social d-flex align-items-center justify-content-lg-start justify-content-center">
+          <a class="nav-link" href="https://t.me/kgoryachev" target="_blank" rel="noopener" aria-label="Telegram" title="Telegram"><img src="/images/base/tg.svg" class="icon" alt="" aria-hidden="true"></a>
+          <a class="nav-link" href="mailto:kevin.glare@gmail.com" aria-label="Почта" title="Почта"><img src="/images/base/mail.svg" class="icon" alt="" aria-hidden="true"></a>
+          <a class="nav-link" href="https://github.com/kevin-glare" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><img src="/images/base/gh.svg" class="icon" alt="" aria-hidden="true"></a>
+          <a class="nav-link" href="{{ "index.xml" | absURL }}" aria-label="RSS-лента" title="RSS-лента"><img src="/images/base/rss.svg" class="icon" alt="" aria-hidden="true"></a>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <div class="d-flex align-items-center justify-content-lg-end justify-content-center text-white-50">
+          <small>© {{ now.Format "2006" }} Горячев Константин</small>
+        </div>
+      </div>
     </div>
-    <div class="footer-copy">© {{ now.Format "2006" }} Горячев Константин</div>
   </div>
 </footer>

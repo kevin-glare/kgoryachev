@@ -3,27 +3,27 @@
 {{ $sectionTitle := "Статьи" }}
 {{ if eq .Type "news" }}{{ $sectionURL = "/news/" }}{{ $sectionTitle = "Новости" }}{{ end }}
 <div id="post">
-  <main class="container-wide">
+  <main class="container mb-6">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li><a href="/">Главная</a></li>
-        <li><a href="{{ $sectionURL }}">{{ $sectionTitle }}</a></li>
-        <li class="active" aria-current="page">{{ .Title }}</li>
+        <li class="breadcrumb-item"><a href="/">Главная</a></li>
+        <li class="breadcrumb-item"><a href="{{ $sectionURL }}">{{ $sectionTitle }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
       </ol>
     </nav>
 
     <h1 class="title post-title">{{ .Title }}</h1>
 
-    <div class="post-meta">
+    <div class="post-meta text-muted mb-3">
       <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02.01.2006" }}</time>
       {{ if .Lastmod.After .Date }}
-      <span class="dot" aria-hidden="true">·</span>
+      <span aria-hidden="true">·</span>
       <span>обновлено <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "02.01.2006" }}</time></span>
       {{ end }}
-      <span class="dot" aria-hidden="true">·</span>
+      <span aria-hidden="true">·</span>
       <span>{{ .ReadingTime }} мин чтения</span>
       {{ with .GetTerms "tags" }}
-      <span class="dot" aria-hidden="true">·</span>
+      <span aria-hidden="true">·</span>
       {{ range . }}
       <a class="post-tag" href="{{ .Permalink }}">#{{ .LinkTitle }}</a>
       {{ end }}
@@ -31,7 +31,7 @@
     </div>
 
     {{ if and (default true .Params.toc) (gt (len .TableOfContents) 33) }}
-    <details class="toc">
+    <details class="toc mb-4">
       <summary>Оглавление</summary>
       {{ .TableOfContents }}
     </details>
@@ -61,40 +61,40 @@
     {{ end }}
     {{ end }}
     {{ with $final }}
-    <div class="related">
-      <h3 class="related-title">Читайте также</h3>
-      <ul>
+    <div class="related my-4">
+      <h3 class="h5 mb-3">Читайте также</h3>
+      <ul class="list-unstyled">
         {{ range . }}
-        <li>
+        <li class="mb-2">
           <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-          <span class="date">{{ .Date.Format "02.01.2006" }}</span>
+          <span class="text-muted small ms-1">{{ .Date.Format "02.01.2006" }}</span>
         </li>
         {{ end }}
       </ul>
     </div>
     {{ end }}
 
-    <div class="share">
-      <span class="share-label">Поделиться:</span>
-      <a class="btn-chip" href="https://t.me/share/url?url={{ .Permalink | absURL }}&text={{ .Title | urlquery }}" target="_blank" rel="noopener">Telegram</a>
-      <a class="btn-chip" href="https://vk.com/share.php?url={{ .Permalink | absURL }}" target="_blank" rel="noopener">ВКонтакте</a>
-      <a class="btn-chip" href="https://twitter.com/intent/tweet?url={{ .Permalink | absURL }}&text={{ .Title | urlquery }}" target="_blank" rel="noopener">X</a>
-      <button class="btn-chip" type="button" data-copy="{{ .Permalink | absURL }}">Скопировать ссылку</button>
+    <div class="share d-flex flex-wrap align-items-center gap-2 my-4">
+      <span class="text-muted me-1">Поделиться:</span>
+      <a class="btn btn-sm btn-outline-dark" href="https://t.me/share/url?url={{ .Permalink | absURL }}&text={{ .Title | urlquery }}" target="_blank" rel="noopener">Telegram</a>
+      <a class="btn btn-sm btn-outline-dark" href="https://vk.com/share.php?url={{ .Permalink | absURL }}" target="_blank" rel="noopener">ВКонтакте</a>
+      <a class="btn btn-sm btn-outline-dark" href="https://twitter.com/intent/tweet?url={{ .Permalink | absURL }}&text={{ .Title | urlquery }}" target="_blank" rel="noopener">X</a>
+      <button class="btn btn-sm btn-outline-dark" type="button" data-copy="{{ .Permalink | absURL }}">Скопировать ссылку</button>
     </div>
 
-    <div class="cta">
-      <span class="cta-icon">
+    <div class="card bg-dark text-white cta my-4">
+      <div class="card-body d-flex align-items-center gap-3">
         <img src="/images/base/tg.svg" class="icon" alt="" aria-hidden="true" width="36" height="36">
-      </span>
-      <div>
-        Обсудить статью, задать вопрос или предложить тему —
-        <a href="{{ site.Params.telegram }}" target="_blank" rel="noopener">напишите мне в Telegram</a>
+        <div>
+          Обсудить статью, задать вопрос или предложить тему —
+          <a class="text-white text-decoration-underline" href="{{ site.Params.telegram }}" target="_blank" rel="noopener">напишите мне в Telegram</a>
+        </div>
       </div>
     </div>
   </main>
 
-  <div class="container-wide">
-    <ul class="post-nav">
+  <div class="container content">
+    <ul class="post-nav list-unstyled">
       {{ with .PrevInSection }}
       <li>{{ if eq .Type "news" }}Предыдущий выпуск{{ else }}Предыдущая статья{{ end }}: <a class="previous" href="{{ .Permalink }}">{{ .Title }}</a></li>
       {{ end }}
@@ -104,4 +104,46 @@
     </ul>
   </div>
 </div>
+
+<script>
+  function legacyCopy(text) {
+    return new Promise(function (resolve, reject) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy') ? resolve() : reject(new Error('copy failed'));
+      } catch (e) {
+        reject(e);
+      } finally {
+        document.body.removeChild(ta);
+      }
+    });
+  }
+
+  function copyToClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text).catch(function () { return legacyCopy(text); });
+    }
+    return legacyCopy(text);
+  }
+
+  document.querySelectorAll('[data-copy]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      copyToClipboard(btn.dataset.copy).then(function () {
+        var label = btn.textContent;
+        btn.textContent = 'Скопировано!';
+        setTimeout(function () { btn.textContent = label; }, 2000);
+      }).catch(function () {
+        var label = btn.textContent;
+        btn.textContent = 'Не удалось скопировать';
+        setTimeout(function () { btn.textContent = label; }, 2000);
+      });
+    });
+  });
+</script>
 {{ end }}

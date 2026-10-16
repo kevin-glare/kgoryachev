@@ -16,7 +16,7 @@
   {{ if eq .Type "news" }}{{ $ogImage = "" }}{{ end }}
 
   {{ if .IsHome }}
-  <title>{{ site.Title }} — Tech Lead | Руководитель групп разработки</title>
+  <title>{{ site.Title }} — CTO | Tech Lead | Senior Web Software Engineer</title>
   {{ else }}
   <title>{{ $title }} | {{ site.Title }}</title>
   {{ end }}
@@ -53,13 +53,13 @@
   {{ end }}
   {{ else }}
   <meta property="og:type" content="website">
-  <meta property="og:title" content="{{ if .IsHome }}{{ site.Title }} — Tech Lead | Руководитель групп разработки{{ else }}{{ $title }} | {{ site.Title }}{{ end }}">
+  <meta property="og:title" content="{{ if .IsHome }}{{ site.Title }} — CTO | Tech Lead | Senior Web Software Engineer{{ else }}{{ $title }} | {{ site.Title }}{{ end }}">
   <meta property="og:description" content="{{ site.Params.description }}">
   {{ end }}
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ if .IsHome }}{{ site.Title }} — Tech Lead | Руководитель групп разработки{{ else }}{{ $title }} | {{ site.Title }}{{ end }}">
+  <meta name="twitter:title" content="{{ if .IsHome }}{{ site.Title }} — CTO | Tech Lead | Senior Web Software Engineer{{ else }}{{ $title }} | {{ site.Title }}{{ end }}">
   <meta name="twitter:description" content="{{ $description }}">
   {{ with $ogImage }}
   <meta name="twitter:image" content="{{ . | absURL }}">
@@ -71,11 +71,10 @@
   <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ site.Title }}">
   {{ end }}
 
-  <meta name="theme-color" content="#0e1218">
+  <meta name="theme-color" content="#212529">
 
-  <link rel="preload" href="/fonts/Inter-400-800-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/Inter-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
-
+  {{ $bootstrap := resources.Get "vendor/bootstrap/bootstrap.min.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $bootstrap.Permalink }}">
   {{ $style := resources.Get "styles/style.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $style.Permalink }}">
   {{ if and .IsPage (eq .Section "posts") }}
@@ -89,15 +88,12 @@
 </head>
 
 <body>
-  <a class="skip-link" href="#main">Перейти к содержимому</a>
   {{ partial "navbar.html" . }}
-  <main id="main">
   {{ block "main" . }}
   {{ end }}
-  </main>
   {{ partial "footer.html" . }}
-  {{ $main := resources.Get "js/main.js" | minify | fingerprint }}
-  <script src="{{ $main.Permalink }}" defer></script>
+  {{ $bsJs := resources.Get "vendor/bootstrap/bootstrap.bundle.min.js" | minify | fingerprint }}
+  <script src="{{ $bsJs.Permalink }}"></script>
 
   {{ if eq hugo.Environment "production" }}
   <script type="text/javascript">

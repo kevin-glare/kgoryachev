@@ -1,21 +1,21 @@
 {{ define "main" }}
 {{ $months := slice "января" "февраля" "марта" "апреля" "мая" "июня" "июля" "августа" "сентября" "октября" "ноября" "декабря" }}
 <div id="post" class="news-single">
-  <main class="container-wide">
+  <main class="container mb-6">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li><a href="/">Главная</a></li>
-        <li><a href="/news/">Новости</a></li>
+        <li class="breadcrumb-item"><a href="/">Главная</a></li>
+        <li class="breadcrumb-item"><a href="/news/">Новости</a></li>
         {{ $short := .Title }}
         {{ with findRE `^[^:]+` .Title 1 }}{{ $short = index . 0 }}{{ end }}
         {{ if gt (len $short) 40 }}{{ $short = truncate 37 $short }}{{ end }}
-        <li class="active" aria-current="page">{{ $short }}</li>
+        <li class="breadcrumb-item active" aria-current="page">{{ $short }}</li>
       </ol>
     </nav>
 
     <h1 class="title post-title">{{ .Title }}</h1>
 
-    <div class="post-meta">
+    <div class="post-meta text-muted mb-3">
       <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02" }} {{ index $months (sub .Date.Month 1) }} {{ .Date.Format "2006" }}</time>
     </div>
 
@@ -42,32 +42,32 @@
     {{ end }}
     {{ end }}
     {{ with $final }}
-    <div class="related">
-      <h3 class="related-title">Читайте также</h3>
-      <ul>
+    <div class="related my-4">
+      <h3 class="h5 mb-3">Читайте также</h3>
+      <ul class="list-unstyled">
         {{ range . }}
-        <li>
+        <li class="mb-2">
           <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-          <span class="date">{{ .Date.Format "02.01.2006" }}</span>
+          <span class="text-muted small ms-1">{{ .Date.Format "02.01.2006" }}</span>
         </li>
         {{ end }}
       </ul>
     </div>
     {{ end }}
 
-    <div class="cta">
-      <span class="cta-icon">
+    <div class="card bg-dark text-white cta my-4">
+      <div class="card-body d-flex align-items-center gap-3">
         <img src="/images/base/tg.svg" class="icon" alt="" aria-hidden="true" width="36" height="36">
-      </span>
-      <div>
-        Обсудить выпуск, задать вопрос или предложить тему —
-        <a href="{{ site.Params.telegram }}" target="_blank" rel="noopener">напишите мне в Telegram</a>
+        <div>
+          Обсудить выпуск, задать вопрос или предложить тему —
+          <a class="text-white text-decoration-underline" href="{{ site.Params.telegram }}" target="_blank" rel="noopener">напишите мне в Telegram</a>
+        </div>
       </div>
     </div>
   </main>
 
-  <div class="container-wide">
-    <ul class="post-nav">
+  <div class="container content">
+    <ul class="post-nav list-unstyled">
       {{ with .PrevInSection }}
       <li>Предыдущий выпуск: <a class="previous" href="{{ .Permalink }}">{{ .Title }}</a></li>
       {{ end }}
