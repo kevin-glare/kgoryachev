@@ -31,7 +31,7 @@ disableKinds = ['taxonomy']
 
 [params]
   author = 'Горячев Константин'
-  description = 'CTO | Tech Lead | Senior Web Software Engineer. Личный сайт: проекты, опыт и статьи о разработке.'
+  description = 'Tech Lead, руководитель групп разработки. Личный сайт: проекты, опыт и статьи о разработке.'
   telegram = 'https://t.me/kgoryachev'
   github = 'https://github.com/kevin-glare'
   email = 'kevin.glare@gmail.com'
