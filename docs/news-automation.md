@@ -34,9 +34,11 @@
    минимум два разных типа источников (Hacker News + Хабр, или официальный
    блог + Хабр, и т.д.). Не более двух пунктов выпуска с одного сайта —
    если разнообразие не набирается, выпуск короче, а не однообразнее.
-   Источники: news.ycombinator.com, habr.com/ru/top/, vc.ru, официальные
-   блоги (go.dev/blog, postgresql.org, kafka.apache.org,
-   blog.jetbrains.com), инженерные блоги компаний. Выбрать 3–5 пунктов;
+   Источники: news.ycombinator.com, habr.com/ru/top/, vc.ru, инженерные
+   блоги крупных компаний (netflixtechblog.com, eng.uber.com,
+   blog.cloudflare.com, discord.com/blog, shopify.engineering,
+   dropbox.tech, anthropic.com/engineering), официальные блоги
+   (go.dev/blog, postgresql.org, kafka.apache.org). Выбрать 3–5 пунктов;
    хотя бы один приоритета 1, если есть — один позиционный. Нумерацию
    выпусков не использовать.
 
