@@ -45,11 +45,13 @@
 
 ## Источники
 
-Хабр (топ), VC.ru, лента Hacker News, инженерные блоги крупных компаний:
+Хабр (топ), VC.ru, лента Hacker News, ИБ-СМИ: «Хакер» (xakep.ru),
+Эксплойт (exploit.in); отраслевые: CNews (cnews.ru), TAdviser
+(tadviser.ru), 3DNews (3dnews.ru); инженерные блоги крупных компаний:
 Netflix (netflixtechblog.com), Uber (eng.uber.com), Cloudflare
 (blog.cloudflare.com), Discord (discord.com/blog), Shopify
 (shopify.engineering), Dropbox (dropbox.tech), Anthropic
 (anthropic.com/engineering); официальные блоги: go.dev/blog,
 postgresql.org, kafka.apache.org.
 
-**Исключено**: blog.jetbrains.com — по решению автора.
+**Исключено**: blog.jetbrains.com и php.net — по решению автора.
