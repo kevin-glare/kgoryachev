@@ -1,13 +1,13 @@
 {
   "name": "Горячев Константин",
   "short_name": "К. Горячев",
-  "description": "CTO | Tech Lead | Senior Web Software Engineer",
+  "description": "Руководитель группы разработки / Tech Lead. Проекты, опыт и статьи о разработке.",
   "lang": "ru",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "theme_color": "#212529",
-  "background_color": "#212529",
+  "theme_color": "#f6f8fe",
+  "background_color": "#f6f8fe",
   "icons": [
     {
       "src": "/images/base/android-chrome-192x192.png",

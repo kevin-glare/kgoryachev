@@ -8,7 +8,9 @@
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">Главная</a></li>
         <li class="breadcrumb-item"><a href="{{ $sectionURL }}">{{ $sectionTitle }}</a></li>
-        <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+        {{ $crumbTitle := .Title }}
+        {{ if gt (len $crumbTitle) 40 }}{{ $crumbTitle = truncate 37 $crumbTitle }}{{ end }}
+        <li class="breadcrumb-item active" aria-current="page">{{ $crumbTitle }}</li>
       </ol>
     </nav>
 
@@ -32,7 +34,7 @@
 
     {{ if and (default true .Params.toc) (gt (len .TableOfContents) 33) }}
     <details class="toc mb-4">
-      <summary>Оглавление</summary>
+      <summary><span class="toc-chev" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="m6 4 4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Оглавление</summary>
       {{ .TableOfContents }}
     </details>
     {{ end }}
@@ -84,7 +86,7 @@
 
     <div class="card bg-dark text-white cta my-4">
       <div class="card-body d-flex align-items-center gap-3">
-        <img src="/images/base/tg.svg" class="icon" alt="" aria-hidden="true" width="36" height="36">
+        {{ partial "icon.html" (dict "name" "tg" "size" 36) }}
         <div>
           Обсудить статью, задать вопрос или предложить тему —
           <a class="text-white text-decoration-underline" href="{{ site.Params.telegram }}" target="_blank" rel="noopener">напишите мне в Telegram</a>
@@ -96,10 +98,10 @@
   <div class="container content">
     <ul class="post-nav list-unstyled">
       {{ with .PrevInSection }}
-      <li>{{ if eq .Type "news" }}Предыдущий выпуск{{ else }}Предыдущая статья{{ end }}: <a class="previous" href="{{ .Permalink }}">{{ .Title }}</a></li>
+      <li><span class="post-nav-label">{{ if eq .Type "news" }}Предыдущий выпуск{{ else }}Предыдущая статья{{ end }}</span><a class="previous" href="{{ .Permalink }}">{{ .Title }}</a></li>
       {{ end }}
       {{ with .NextInSection }}
-      <li>{{ if eq .Type "news" }}Следующий выпуск{{ else }}Следующая статья{{ end }}: <a class="next" href="{{ .Permalink }}">{{ .Title }}</a></li>
+      <li><span class="post-nav-label">{{ if eq .Type "news" }}Следующий выпуск{{ else }}Следующая статья{{ end }}</span><a class="next" href="{{ .Permalink }}">{{ .Title }}</a></li>
       {{ end }}
     </ul>
   </div>

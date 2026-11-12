@@ -16,7 +16,7 @@
   {{ if eq .Type "news" }}{{ $ogImage = "" }}{{ end }}
 
   {{ if .IsHome }}
-  <title>{{ site.Title }} — CTO | Tech Lead | Senior Web Software Engineer</title>
+  <title>{{ site.Title }} — Tech Lead · Руководитель группы разработки</title>
   {{ else }}
   <title>{{ $title }} | {{ site.Title }}</title>
   {{ end }}
@@ -53,13 +53,13 @@
   {{ end }}
   {{ else }}
   <meta property="og:type" content="website">
-  <meta property="og:title" content="{{ if .IsHome }}{{ site.Title }} — CTO | Tech Lead | Senior Web Software Engineer{{ else }}{{ $title }} | {{ site.Title }}{{ end }}">
+  <meta property="og:title" content="{{ if .IsHome }}{{ site.Title }} — Tech Lead · Руководитель группы разработки{{ else }}{{ $title }} | {{ site.Title }}{{ end }}">
   <meta property="og:description" content="{{ site.Params.description }}">
   {{ end }}
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ if .IsHome }}{{ site.Title }} — CTO | Tech Lead | Senior Web Software Engineer{{ else }}{{ $title }} | {{ site.Title }}{{ end }}">
+  <meta name="twitter:title" content="{{ if .IsHome }}{{ site.Title }} — Tech Lead · Руководитель группы разработки{{ else }}{{ $title }} | {{ site.Title }}{{ end }}">
   <meta name="twitter:description" content="{{ $description }}">
   {{ with $ogImage }}
   <meta name="twitter:image" content="{{ . | absURL }}">
@@ -71,7 +71,13 @@
   <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ site.Title }}">
   {{ end }}
 
-  <meta name="theme-color" content="#212529">
+  <meta name="theme-color" content="#f6f8fe">
+
+  {{ $fonts := resources.Get "styles/fonts.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $fonts.Permalink }}">
+  <link rel="preload" href="/fonts/unbounded-800-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/unbounded-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/golos-text-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 
   {{ $bootstrap := resources.Get "vendor/bootstrap/bootstrap.min.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $bootstrap.Permalink }}">
@@ -87,7 +93,8 @@
   {{ partial "structured-data.html" . }}
 </head>
 
-<body>
+<body{{ if .IsHome }} class="page-home"{{ end }}>
+  <script>document.documentElement.classList.add('js');</script>
   {{ partial "navbar.html" . }}
   {{ block "main" . }}
   {{ end }}

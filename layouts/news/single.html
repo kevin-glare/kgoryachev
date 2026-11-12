@@ -20,7 +20,8 @@
     </div>
 
     <article class="content">
-      {{ .Content }}
+      {{/* разделы выпуска: h3 → h2 (иерархия без пропусков; стиль под h2 уже в CSS) */}}
+      {{ .Content | replaceRE "<h3" "<h2" | replaceRE "</h3>" "</h2>" | safeHTML }}
     </article>
 
     {{ $myTags := slice }}
@@ -43,7 +44,7 @@
     {{ end }}
     {{ with $final }}
     <div class="related my-4">
-      <h3 class="h5 mb-3">Читайте также</h3>
+      <h2 class="h5 mb-3">Читайте также</h2>
       <ul class="list-unstyled">
         {{ range . }}
         <li class="mb-2">
@@ -57,7 +58,7 @@
 
     <div class="card bg-dark text-white cta my-4">
       <div class="card-body d-flex align-items-center gap-3">
-        <img src="/images/base/tg.svg" class="icon" alt="" aria-hidden="true" width="36" height="36">
+        {{ partial "icon.html" (dict "name" "tg" "size" 36) }}
         <div>
           Обсудить выпуск, задать вопрос или предложить тему —
           <a class="text-white text-decoration-underline" href="{{ site.Params.telegram }}" target="_blank" rel="noopener">напишите мне в Telegram</a>
@@ -69,10 +70,10 @@
   <div class="container content">
     <ul class="post-nav list-unstyled">
       {{ with .PrevInSection }}
-      <li>Предыдущий выпуск: <a class="previous" href="{{ .Permalink }}">{{ .Title }}</a></li>
+      <li><span class="post-nav-label">Предыдущий выпуск</span><a class="previous" href="{{ .Permalink }}">{{ .Title }}</a></li>
       {{ end }}
       {{ with .NextInSection }}
-      <li>Следующий выпуск: <a class="next" href="{{ .Permalink }}">{{ .Title }}</a></li>
+      <li><span class="post-nav-label">Следующий выпуск</span><a class="next" href="{{ .Permalink }}">{{ .Title }}</a></li>
       {{ end }}
     </ul>
   </div>

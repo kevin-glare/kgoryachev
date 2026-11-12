@@ -1,9 +1,10 @@
 {{ define "main" }}
-<div id="content">
+<div id="content" class="error-page">
   <div class="container">
-    <h1 class="title text-white">Страница не найдена</h1>
-    <p class="text-white-50">Похоже, такой страницы больше нет. Возможно, она переехала.</p>
-    <a class="btn btn-outline-light" href="/">Вернуться на главную</a>
+    <p class="error-code mb-2">404 · страница не найдена</p>
+    <h1>Такой страницы нет</h1>
+    <p class="text-secondary">Возможно, страница переехала. Вернитесь на главную или загляните <a href="/posts/">в статьи</a>.</p>
+    <a class="btn-hero primary mt-3" href="/">На главную</a>
   </div>
 </div>
 

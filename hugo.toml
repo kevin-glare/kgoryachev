@@ -1,7 +1,7 @@
 baseURL = 'https://kgoryachev.ru'
 locale = 'ru-RU'
 languageName = 'Русский'
-title = 'Горячев Константин'
+title = 'Константин Горячев'
 
 enableRobotsTXT = true
 enableGitInfo = true
@@ -30,11 +30,11 @@ disableKinds = ['taxonomy']
   tags = '/posts/tags/:slug/'
 
 [params]
-  author = 'Горячев Константин'
-  description = 'CTO | Tech Lead | Senior Web Software Engineer. Личный сайт: проекты, опыт и статьи о разработке.'
-  telegram = 'https://t.me/kgoryachev'
+  author = 'Константин Горячев'
+  description = 'Руководитель группы разработки / Tech Lead. 10+ лет в разработке, 5+ лет руковожу командами. Проекты, опыт и статьи о разработке.'
+  telegram = 'https://t.me/kevinglare'
   github = 'https://github.com/kevin-glare'
-  email = 'kevin.glare@gmail.com'
+  email = 'kevinglare@yandex.ru'
   ogImage = '/images/base/og-cover.png'
 
 [markup]

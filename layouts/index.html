@@ -2,239 +2,491 @@
 {{ end }}
 
 {{ define "main" }}
-<canvas id="projector" aria-hidden="true">Your browser does not support the Canvas element.</canvas>
-<div id="content" data-bs-target="#navbar" data-bs-offset="0" class="d-flex w-100 h-100 mx-auto flex-column"
-  tabindex="0">
-  <section id="home" class="banner-area">
+{{ $itYears := sub now.Year 2016 }}
+{{ $leadYears := sub now.Year 2021 }}
+<div class="home">
+  <div class="scene" aria-hidden="true">
+    <i class="scene-shape scene-shape-1"></i>
+    <i class="scene-shape scene-shape-2"></i>
+  </div>
+
+  <section class="hero">
     <div class="container">
-      <div class="row fullscreen align-items-top justify-content-between">
-        <div class="col-lg-6 col-md-6 banner-left pt-3 pb-3">
-          <h1>Горячев Константин</h1>
-          <p class="text-white banner-subtitle">CTO | Tech Lead | Senior Web Software Engineer</p>
+      <div class="hero-grid">
+        <h1 class="hero-in" style="--d:.05s">Константин <span class="word-accent">Горячев</span></h1>
+        <div class="hero-copy hero-in" style="--d:.18s">
+          <p class="lead">Разрабатывал и запускал <b>Face Pay</b> и «<b>Виртуальную Тройку</b>» в метро Москвы, собирал с нуля внутри Ecom систему управления ассортиментом «Самоката» и систему автокодирования товаров «Мегамаркета». Сейчас руковожу онбордингом юрлиц в <b>ВБ Банке</b>.</p>
+          <div class="hero-actions">
+            <a class="btn-hero primary" href="https://t.me/kevinglare" target="_blank" rel="noopener">Написать в Telegram</a>
+            <a class="btn-hero ghost" href="#experience">Опыт и проекты</a>
+          </div>
         </div>
-        <div class="col-lg-6 col-md-6 banner-right d-flex align-self-end"> <img class="img-fluid first"
-            src="/images/base/ava.webp" width="463" height="462" alt="Горячев Константин" /> </div>
+        <figure class="hero-media">
+          <img src="/images/base/ava-2026.webp" width="640" height="640" alt="Константин Горячев" fetchpriority="high">
+        </figure>
       </div>
+      <dl class="hero-stats hero-in" style="--d:.42s">
+        <div class="stat">
+          <dt class="stat-num">{{ $itYears }}<span class="stat-unit">лет</span></dt>
+          <dd class="stat-label">коммерческой разработки: писал код, проектировал архитектуру приложений и растил разработчиков</dd>
+        </div>
+        <div class="stat">
+          <dt class="stat-num">{{ $leadYears }}<span class="stat-unit">лет</span></dt>
+          <dd class="stat-label">руковожу кросс-функциональными командами: системный анализ, фронт и бэк-разработка, QA и саппорт</dd>
+        </div>
+        <div class="stat">
+          <dt class="stat-num">6<span class="stat-unit">направлений</span></dt>
+          <dd class="stat-label">от логистики и документооборота до образования, транспорта, ритейла и финтеха</dd>
+        </div>
+        <div class="stat">
+          <dt class="stat-num">11<span class="stat-unit">продуктов</span></dt>
+          <dd class="stat-label">бесконтактная оплата проезда в метро и МГТ, ассортимент «Самоката», онбординг и открытие счетов юрлиц</dd>
+        </div>
+      </dl>
     </div>
   </section>
-  <section id="about" class="services-area section-gap first">
+
+  <section id="about" class="section">
     <div class="container">
-      <div class="row align-items-center justify-content-between">
-        <div class="col-12 about">
+      <div class="rail">
+        <header class="rail-head reveal">
           <h2>Обо мне</h2>
-          <p> 
-            Являюсь техническим руководителем продукта. Занимаюсь выстраиванием деливери процессов и развитием команды.<br>
-            Отвечаю за работу команд разработки, тестирования, системного анализа и архитектуры.<br>
-            Принимаю непосредственное участие в создании высоконагруженных, отказоустойчивых и надежных приложений, уделяя особое внимание наблюдаемости, стабильности и производительности систем.
-          </p>
-          <ul>
-            <li><a class="text-dark" href="https://spb.hh.ru/resume/758a7029ff02fcf79f0039ed1f596658354457">Занимаюсь разработкой и проектированием</a> более 10 лет / руковожу тех командами 5 лет;</li>
-            <li>Основные языки программирования Ruby и Go. Также владею Elixir и TS;</li>
-            <li>Имею большой опыт работы в финтехе - работа с платежным шлюзом и токенизация;</li>
-            <li>Разработал MVP и первую версию онлайн-школы <a class="text-dark" href="https://webium.ru"><i>"Вебинариум"</i></a>;</li>
-            <li>Участвовал в разработке платформы <a class="text-dark" href="https://www.mosmetro.ru/payment/contactless-payment/virtual-troyka"><i>"Виртуальная Тройка"</i></a> и внедрения оплаты при помощи <a class="text-dark" href="https://mosmetro.ru/facepay"><i>FacePay</i></a>;</li>
-            <li>Работал над бэкендом приложения <a class="text-dark" href="https://siter.io"><i>"Siter"</i></a>, ставшего лучшим продуктом дня/недели/месяца на <a class="text-dark" href="https://www.producthunt.com/products/siter"><i>Product Hunt</i></a>.
-            </li>
-            <li><a class="text-dark" href="https://t.me/subflowsu_bot/app"><i>"SubFlow"</i></a> - Telegram Mini App, который позволяет монетизировать Telegram-каналы.
-            </li>
-          </ul>
-          <br>
-        </div>
-      </div>
-    </div>
-    <div class="container-fluid py-5">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="horizontal-timeline">
-            <ul class="list-inline items">
-              <li class="list-inline-item items-list">
-                <div class="px-4">
-                  <div class="event-date badge bg-dark">2016</div>
-                  <h3 class="pt-2">Lognetix</h3>
-                  <p class="text-muted">
-                    <i>Фулл-стек разработчик</i><br>
-                    Разработка и сопровождение веб приложений на Ruby/Angular для перевозок из Китая в РФ (полный производственный цикл), интеграция с китайскими и российскими сервисами.
-                  </p>
-                </div>
-              </li>
-              <li class="list-inline-item items-list">
-                <div class="px-4">
-                  <div class="event-date badge bg-dark">2019</div>
-                  <h3 class="pt-2">МультиКарта / ВТБ</h3>
-                  <p class="text-muted">
-                    <i>Главный эксперт</i> <br>
-                    Разработка и поддержка скоринговой системы для проезда на транспорте Москвы, переход на микросервисную архитектуру, оптимизация приложений.
-                  </p>
-                </div>
-              </li>
-              <li class="list-inline-item items-list">
-                <div class="px-4">
-                  <div class="event-date badge bg-dark">2021</div>
-                  <h3 class="pt-2">Иннотех</h3>
-                  <p class="text-muted">
-                    <i>Руководитель группы разработки</i><br>
-                    Руководство разработкой, тестированием и архитекторой. Принимал участие в разработке сервисов "Виртуальной тройки" и Face Pay для метро Москвы и Мосгортранса.
-                  </p>
-                </div>
-              </li>
-              <li class="list-inline-item items-list">
-                <div class="px-4">
-                  <div class="event-date badge bg-dark">2022</div>
-                  <h3 class="pt-2">Samokat.tech</h3>
-                  <p class="text-muted">
-                    <i>Cluster Tech Lead</i><br>
-                    Организация работы фронтенд и бэкенд разработки, тестирования и системного анализа.
-                    Отвечаю за создание новых продуктов, а также за соблюдение качества и сроков. 
-                  </p>
-                </div>
-              </li>
-            </ul>
+        </header>
+        <div class="rail-body">
+          <div class="about-intro reveal">
+            <p class="about-lead">Кластер-техлид. Руковожу командами разработки и при этом остаюсь в коде: сам провожу ревью изменений, занимаюсь архитектурой, вместе с командой разбираю спорные решения и сложные кейсы, повышаю компетенции своих инженеров. Полностью отвечаю за процесс деливери: релизы выходят по плану; риски видны заранее, а не после аварии. Люблю сервисы, которые выдерживают нагрузку и не будят людей по ночам. Чем меньше магии в системе, тем дешевле она обходится команде. Авралы и выгорание считаю признаком сломанного процесса, а не подвигом команды. Поэтому строю работу на честной обратной связи и доверии — без совещаний ради совещаний и процессов ради процессов.</p>
+          </div>
+          <div class="about-grid reveal" style="--d:.1s">
+            <div class="about-facts-col">
+              <h3 class="about-stack-label" id="facts-label">Реализованные проекты</h3>
+              <ul class="about-facts" aria-labelledby="facts-label">
+                <li><a href="https://mosmetro.ru/facepay" target="_blank" rel="noopener">Face Pay</a> и <a href="https://mosmetro.ru/payment/contactless-payment/virtual-troyka" target="_blank" rel="noopener">«Виртуальная Тройка»</a> в метро Москвы — запущены первыми в России</li>
+                <li>Онбординг юрлиц в ВБ Банке — от первого касания клиента до открытия счёта</li>
+                <li>Платёжный шлюз и токенизация в финтехе ВТБ Факторинга</li>
+                <li>Три продукта товарного учёта Ecom.tech: «Ассортиментная матрица», «Товарный справочник» и «Гудс»</li>
+                <li><a href="https://siter.io/" target="_blank" rel="noopener">Siter</a> и <a href="https://storysdk.com/" target="_blank" rel="noopener">StorySDK</a> — лучшие продукты дня/недели/месяца на Product Hunt</li>
+                <li><a href="https://webium.ru" target="_blank" rel="noopener">«Вебинариум»</a> — разработал MVP и первую версию онлайн-школы</li>
+                <li><a href="https://t.me/subflowsu_bot/app" target="_blank" rel="noopener">SubFlow</a> — Telegram Mini App, который позволяет монетизировать Telegram-каналы</li>
+                <li><a href="https://t.me/EggoTgBot" target="_blank" rel="noopener">Eggo</a> — тамагочи, который живёт прямо в Telegram</li>
+              </ul>
+            </div>
+            <div class="about-stack-side">
+              <div class="about-stack-group">
+                <h3 class="about-stack-label" id="stack-tech">Технологии</h3>
+                <ul class="about-stack" aria-labelledby="stack-tech">
+                  <li>Go</li>
+                  <li>Ruby</li>
+                  <li>Elixir</li>
+                  <li>TypeScript</li>
+                  <li>PostgreSQL</li>
+                  <li>Redis</li>
+                  <li>ClickHouse</li>
+                  <li>Trino</li>
+                  <li>Kafka</li>
+                  <li>Apache Airflow</li>
+                  <li>DWH</li>
+                  <li>GraphQL</li>
+                  <li>Архитектура</li>
+                  <li>Linux</li>
+                  <li>Docker</li>
+                  <li>Kubernetes</li>
+                  <li>Helm</li>
+                  <li>CI/CD</li>
+                  <li>Grafana</li>
+                </ul>
+              </div>
+              <div class="about-stack-group">
+                <h3 class="about-stack-label" id="stack-mgmt">Управление</h3>
+                <ul class="about-stack" aria-labelledby="stack-mgmt">
+                  <li>Управление командой</li>
+                  <li>Управление разработкой</li>
+                  <li>Agile</li>
+                  <li>Scrum</li>
+                  <li>Performance Reviews</li>
+                  <li>Наставничество</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <section id="projects" class="edu-area section-gap">
+
+  <section id="experience" class="section">
     <div class="container">
-      <div class="d-flex align-items-center justify-content-between pb-3 projects">
-        <h2>Основные проекты</h2>
-        <div class="cards-nav d-none d-md-flex">
-          <button class="cards-btn" type="button" data-cards-target="projectsScroll" data-cards-dir="prev" aria-label="Предыдущие проекты">&#8592;</button>
-          <button class="cards-btn" type="button" data-cards-target="projectsScroll" data-cards-dir="next" aria-label="Следующие проекты">&#8594;</button>
+      <div class="rail">
+        <header class="rail-head reveal">
+          <h2>Опыт работы</h2>
+        </header>
+        <div class="rail-body">
+          <div class="career reveal" style="--d:.1s">
+        <details class="career-row">
+          <summary class="career-head">
+            <span class="career-head-row">
+              <span class="career-org">
+                <h3>Ранний опыт</h3>
+                <p class="career-role">Ruby-разработчик</p>
+              </span>
+              <span class="career-meta"><span class="career-years">2016 — 2019</span><span class="career-chev" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+            </span>
+            <span class="career-desc">Lognetix — облачная распределённая система для логистических и транспортных компаний: автоматизация бизнес-процессов служб доставки, интеграция с курьерами и управление грузоперевозками.</span>
+          </summary>
+          <ul class="career-extra">
+            <li>DocShell — платформа документооборота и защиты информации для прохождения проверок ФСБ, ФСТЭК и Роскомнадзора;</li>
+            <li>Uchi.ru — платформа домашних заданий.</li>
+          </ul>
+        </details>
+        <details class="career-row">
+          <summary class="career-head">
+            <span class="career-head-row">
+              <span class="career-org">
+                <h3>ВТБ Факторинг</h3>
+                <p class="career-role">Ruby/Golang-разработчик</p>
+              </span>
+              <span class="career-meta"><span class="career-years">2019 — 2021</span><span class="career-chev" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+            </span>
+            <span class="career-desc">Скоринговая система оплаты проезда: переход на микросервисы, 10 млн+ операций в сутки, запуск «Виртуальной Тройки».</span>
+          </summary>
+          <ul class="career-extra">
+            <li>реализовывал систему бесконтактной оплаты проезда: валидаторы, автоматические турникеты, транзакции, расчёт тарифов и составных поездок;</li>
+            <li>мигрировал монолит на микросервисы на Go — снял ограничения масштабирования и единые точки отказа;</li>
+            <li>прошёл рост нагрузки до 10+ млн операций в сутки без остановки оплаты проезда;</li>
+            <li>разработал и вывел на рынок «Виртуальную Тройку».</li>
+          </ul>
+        </details>
+        <details class="career-row">
+          <summary class="career-head">
+            <span class="career-head-row">
+              <span class="career-org">
+                <h3>Иннотех</h3>
+                <p class="career-role">Руководитель группы разработки</p>
+              </span>
+              <span class="career-meta"><span class="career-years">2021 — 2022</span><span class="career-chev" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+            </span>
+            <span class="career-desc">Обновление «Виртуальной Тройки» на QR и полуофлайн-режим. Запуск Face Pay в метро — первыми в России.</span>
+          </summary>
+          <ul class="career-extra">
+            <li>Face Pay в московском метро — запуск первыми в России: миллионы полностью бесконтактных проходов в месяц;</li>
+            <li>QR-оплата и полуофлайн-режим «Виртуальной Тройки» — проезд оплачивается даже при полном отсутствии интернета;</li>
+            <li>тариф «Кошелёк» — электронный кошелёк «Тройки» для разовых поездок: пополняешь баланс заранее, платишь только за реальные поездки.</li>
+          </ul>
+        </details>
+        <details class="career-row">
+          <summary class="career-head">
+            <span class="career-head-row">
+              <span class="career-org">
+                <h3>Ecom.tech</h3>
+                <p class="career-role">Product Tech Lead</p>
+              </span>
+              <span class="career-meta"><span class="career-years">2022 — 2026</span><span class="career-chev" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+            </span>
+            <span class="career-desc">Кросс-функциональные команды и три продукта товарного учёта: «Ассортиментная матрица», «Товарный справочник», «Гудс».</span>
+          </summary>
+          <ul class="career-extra">
+            <li>«Ассортиментная матрица» — запустил с нуля систему управления ассортиментом холдинга: вывод товара в продажу ускорился с недели до часа, пропали человеческие ошибки, процесс стал надёжным, решения о включении стали обоснованными;</li>
+            <li>«Товарный справочник» стал мастер-системой товарных данных;</li>
+            <li>«Гудс» — автоматическое кодирование импульсных товаров;</li>
+            <li>деливери кросс-функциональных команд (Dev, QA, SA): релизы по плану, путь фичи до прода прозрачен.</li>
+          </ul>
+        </details>
+        <details class="career-row job-current">
+          <summary class="career-head">
+            <span class="career-head-row">
+              <span class="career-org">
+                <h3>Вайлдберриз <span class="job-now">работаю здесь</span></h3>
+                <p class="career-role">Руководитель группы разработки</p>
+              </span>
+              <span class="career-meta"><span class="career-years">2026 — н. в.</span><span class="career-chev" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+            </span>
+            <span class="career-desc">Финтех ВБ Банка: полный цикл онбординга юридических лиц — от постановки задач до договорной работы.</span>
+          </summary>
+          <ul class="career-extra">
+            <li>сервис онбординга юридических лиц — входная точка всех корпоративных клиентов ВБ Банка;</li>
+            <li>реализовали мультикабинет — работа с несколькими компаниями в одном интерфейсе;</li>
+            <li>реализовали изменение флоу выездного сервиса — меньше ошибок, ниже стоимость для банка;</li>
+            <li>добавилена возможность работы нерезидентов и проверки по реестру контролируемых лиц.</li>
+          </ul>
+        </details>
         </div>
       </div>
-      <div class="cards-scroll" id="projectsScroll">
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="rail">
+        <header class="rail-head reveal">
+          <h2>Проекты</h2>
+          <div class="cards-nav">
+            <button class="cards-btn" type="button" data-cards-target="projectsScroll" data-cards-dir="prev" aria-label="Предыдущие проекты"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M16 9H2.5M8.5 3.5 3 9l5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button class="cards-btn" type="button" data-cards-target="projectsScroll" data-cards-dir="next" aria-label="Следующие проекты"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M2 9h13.5M9.5 3.5 15 9l-5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+        </header>
+        <div class="rail-body">
+          <div class="cards-scroll reveal" id="projectsScroll" style="--d:.1s">
         <div class="card card-slide">
-          <img class="card-img-top" src="/images/base/subflow.webp" alt="SubFlow" loading="lazy" decoding="async"width=569 height=350>
+          <img class="card-img-top" src="/images/base/subflow-640b.webp" alt="SubFlow" loading="lazy" decoding="async" width="640" height="410">
           <div class="card-body">
             <h3 class="card-title">SubFlow</h3>
-            <p class="card-text">SubFlow — Telegram Mini App, который позволяет монетизировать Telegram-канал за 5 минут.</p>
+            <p class="card-text">Telegram Mini App: монетизация Telegram-канала за 5 минут, подписки и выплаты на автомате.</p>
           </div>
         </div>
         <div class="card card-slide">
-          <img class="card-img-top" src="/images/base/troika.webp" alt="Виртуальная Тройка" loading="lazy" decoding="async"width=569 height=350>
+          <img class="card-img-top" src="/images/base/troika-640b.webp" alt="Виртуальная Тройка" loading="lazy" decoding="async" width="640" height="410">
           <div class="card-body">
             <h3 class="card-title">Виртуальная Тройка</h3>
-            <p class="card-text">Проездной в вашем смартфоне. Больше никаких лишних пластиковых карт и очередей за
-              билетами.</p>
+            <p class="card-text">Проездной в смартфоне — без пластика и очередей за билетами. В приложении «Метро Москвы».</p>
           </div>
         </div>
         <div class="card card-slide">
-          <img class="card-img-top" src="/images/base/covid.webp" alt="CovidQrWallet" loading="lazy" decoding="async"width=569 height=350>
+          <img class="card-img-top" src="/images/base/covid-640b.webp" alt="CovidQrWallet" loading="lazy" decoding="async" width="640" height="410">
           <div class="card-body">
             <h3 class="card-title">CovidQrWallet</h3>
-            <p class="card-text">Cертификат о вакцинации Covid-19 в вашем Apple Wallet. Больше не придется тратить
-              время, чтобы найти свой QR.</p>
+            <p class="card-text">Сертификат о вакцинации в Apple Wallet — QR-код всегда под рукой, без поиска в почте.</p>
           </div>
         </div>
         <div class="card card-slide">
-          <img class="card-img-top" src="/images/base/storysdk.webp" alt="StorySDK" loading="lazy" decoding="async"width=569 height=350>
+          <img class="card-img-top" src="/images/base/storysdk-640b.webp" alt="StorySDK" loading="lazy" decoding="async" width="640" height="410">
           <div class="card-body">
             <h3 class="card-title">StorySDK</h3>
-            <p class="card-text">Создавайте и добавляйте сторис в ваши приложения. Истории создаются в пару кликов в
-              веб-редакторе.</p>
+            <p class="card-text">Сторис в мобильных приложениях — истории создаются в веб-редакторе за пару кликов.</p>
           </div>
         </div>
         <div class="card card-slide">
-          <img class="card-img-top" src="/images/base/siter.webp" alt="Siter" loading="lazy" decoding="async"width=569 height=350>
+          <img class="card-img-top" src="/images/base/siter-640b.webp" alt="Siter" loading="lazy" decoding="async" width="640" height="410">
           <div class="card-body">
             <h3 class="card-title">Siter</h3>
-            <p class="card-text">Проектируйте в облаке и создавайте новые веб-сайты без каких-либо навыков
-              программирования.</p>
+            <p class="card-text">Конструктор сайтов в облаке — без навыков программирования. Лучший продукт дня/недели/месяца на Product Hunt.</p>
           </div>
         </div>
         <div class="card card-slide">
-          <img class="card-img-top" src="/images/base/web.webp" alt="Siter" loading="lazy" decoding="async"width=569 height=350>
+          <img class="card-img-top" src="/images/base/web-640b.webp" alt="Вебинариум" loading="lazy" decoding="async" width="640" height="410">
           <div class="card-body">
             <h3 class="card-title">Вебинариум</h3>
-            <p class="card-text">Подготовим вас к экзаменам ЕГЭ и ОГЭ по всем школьным предметам в режиме онлайн.</p>
+            <p class="card-text">Онлайн-школа подготовки к ЕГЭ и ОГЭ: от MVP до первой рабочей версии.</p>
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="edu" class="section">
+    <div class="container">
+      <div class="rail">
+        <header class="rail-head reveal">
+          <h2>Обучение</h2>
+          <div class="cards-nav">
+            <button class="cards-btn" type="button" data-cards-target="eduScroll" data-cards-dir="prev" aria-label="Предыдущие курсы"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M16 9H2.5M8.5 3.5 3 9l5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button class="cards-btn" type="button" data-cards-target="eduScroll" data-cards-dir="next" aria-label="Следующие курсы"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M2 9h13.5M9.5 3.5 15 9l-5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+        </header>
+        <div class="rail-body">
+          <div class="cards-scroll reveal" id="eduScroll" style="--d:.1s">
+          <div class="card card-slide">
+          <img class="card-img-top" src="/images/base/edu6.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="640" height="410">
+          <div class="card-body">
+            <h3 class="card-title">Путь лидера</h3>
+            <p class="card-subtitle">RWB Образование</p>
+          </div>
+        </div>
+
+        <div class="card card-slide">
+          <img class="card-img-top" src="/images/base/edu1.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="640" height="410">
+          <div class="card-body">
+            <h3 class="card-title">Микросервисная архитектура</h3>
+            <p class="card-subtitle">Microarch</p>
+          </div>
+        </div>
+                <div class="card card-slide">
+          <img class="card-img-top" src="/images/base/edu4.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="640" height="410">
+          <div class="card-body">
+            <h3 class="card-title">Разработка на Go</h3>
+            <p class="card-subtitle">Thinknetica</p>
+          </div>
+        </div>
+                <div class="card card-slide">
+          <img class="card-img-top" src="/images/base/edu2.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="640" height="410">
+          <div class="card-body">
+            <h3 class="card-title">Оптимизация Ruby/Rails-приложений</h3>
+            <p class="card-subtitle">Thinknetica</p>
+          </div>
+        </div>
+        <div class="card card-slide">
+          <img class="card-img-top" src="/images/base/edu3.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="640" height="410">
+          <div class="card-body">
+            <h3 class="card-title">Безопасность Rails-приложений</h3>
+            <p class="card-subtitle">Thinknetica</p>
+          </div>
+        </div>
+
+        <div class="card card-slide">
+          <img class="card-img-top" src="/images/base/edu5.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="640" height="410">
+          <div class="card-body">
+            <h3 class="card-title">5 soft skills проджект-менеджера в IT</h3>
+            <p class="card-subtitle">Skillsetter</p>
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{ $latestLimit := 4 }}
+  <section class="section">
+    <div class="container">
+      <div class="rail">
+        <header class="rail-head reveal">
+          <h2>Статьи</h2>
+          <a class="latest-all" href="{{ "posts/" | absURL }}">Все статьи<svg width="15" height="15" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M2 9h13.5M9.5 3.5 15 9l-5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </header>
+        <div class="rail-body">
+          <div class="latest-col reveal" style="--d:.1s">
+          {{ $postsSection := site.GetPage "/posts" }}
+          {{ $postsLatest := first $latestLimit ($postsSection.Pages.ByDate.Reverse) }}
+          {{ with index $postsLatest 0 }}
+          <a class="latest-featured" href="{{ .RelPermalink }}">
+            <span class="latest-date">{{ .Date.Format "02.01.2006" }}</span>
+            <span class="latest-featured-title">{{ .Title }}</span>
+            <span class="latest-desc">{{ .Description | default (.Summary | plainify) }}</span>
+          </a>
+          {{ end }}
+          <ul class="latest-list">
+            {{ range after 1 $postsLatest }}
+            <li>
+              <a class="latest-link" href="{{ .RelPermalink }}">
+                <span class="latest-date">{{ .Date.Format "02.01.2006" }}</span>
+                <span class="latest-title">{{ .Title }}</span>
+              </a>
+            </li>
+            {{ end }}
+          </ul>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <section id="edu" class="services-area section-gap first">
+
+  <section class="section">
     <div class="container">
-      <div class="d-flex align-items-center justify-content-between pb-3 edu">
-        <h2>Обучение</h2>
-        <div class="cards-nav d-none d-md-flex">
-          <button class="cards-btn black" type="button" data-cards-target="eduScroll" data-cards-dir="prev" aria-label="Предыдущие курсы">&#8592;</button>
-          <button class="cards-btn black" type="button" data-cards-target="eduScroll" data-cards-dir="next" aria-label="Следующие курсы">&#8594;</button>
-        </div>
-      </div>
-      <div class="cards-scroll" id="eduScroll">
-        <div class="card card-slide">
-          <img class="card-img-top" src="/images/base/edu2.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"width=640 height=410>
-          <div class="card-body">
-            <h3 class="card-title">Оптимизация Ruby/Rails-приложений</h3>
-            <p class="card-subtitle text-muted mb-0">Thinknetica</p>
-          </div>
-        </div>
-        <div class="card card-slide">
-          <img class="card-img-top" src="/images/base/edu1.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"width=640 height=410>
-          <div class="card-body">
-            <h3 class="card-title">Микросервисная архитектура</h3>
-            <p class="card-subtitle text-muted mb-0">Microarch</p>
-          </div>
-        </div>
-        <div class="card card-slide">
-          <img class="card-img-top" src="/images/base/edu3.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"width=640 height=410>
-          <div class="card-body">
-            <h3 class="card-title">Безопасность Rails-приложений</h3>
-            <p class="card-subtitle text-muted mb-0">Thinknetica</p>
-          </div>
-        </div>
-        <div class="card card-slide">
-          <img class="card-img-top" src="/images/base/edu4.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"width=640 height=410>
-          <div class="card-body">
-            <h3 class="card-title">Разработка на GO</h3>
-            <p class="card-subtitle text-muted mb-0">Thinknetica</p>
-          </div>
-        </div>
-        <div class="card card-slide">
-          <img class="card-img-top" src="/images/base/edu5.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"width=640 height=410>
-          <div class="card-body">
-            <h3 class="card-title">5 soft skills проджект-менеджера в IT</h3>
-            <p class="card-subtitle text-muted mb-0">Skillsetter</p>
+      <div class="rail">
+        <header class="rail-head reveal">
+          <h2>Новости</h2>
+          <a class="latest-all" href="{{ "news/" | absURL }}">Все новости<svg width="15" height="15" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M2 9h13.5M9.5 3.5 15 9l-5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </header>
+        <div class="rail-body">
+          <div class="latest-col reveal" style="--d:.1s">
+          {{ $newsSection := site.GetPage "/news" }}
+          {{ $newsLatest := first $latestLimit ($newsSection.Pages.ByDate.Reverse) }}
+          {{ with index $newsLatest 0 }}
+          <a class="latest-featured" href="{{ .RelPermalink }}">
+            <span class="latest-date">{{ .Date.Format "02.01.2006" }}</span>
+            <span class="latest-featured-title">{{ .Title }}</span>
+            <span class="latest-desc">{{ .Description | default (.Summary | plainify) }}</span>
+          </a>
+          {{ end }}
+          <ul class="latest-list">
+            {{ range after 1 $newsLatest }}
+            <li>
+              <a class="latest-link" href="{{ .RelPermalink }}">
+                <span class="latest-date">{{ .Date.Format "02.01.2006" }}</span>
+                <span class="latest-title">{{ .Title }}</span>
+              </a>
+            </li>
+            {{ end }}
+          </ul>
           </div>
         </div>
       </div>
-      <script>
-        (function () {
-          document.querySelectorAll('[data-cards-target]').forEach(function (btn) {
-            var scroller = document.getElementById(btn.dataset.cardsTarget);
-            if (!scroller) return;
-            btn.addEventListener('click', function () {
-              var dir = btn.dataset.cardsDir === 'prev' ? -1 : 1;
-              scroller.scrollBy({ left: 320 * dir, behavior: 'smooth' });
-            });
-          });
-        })();
-      </script>
     </div>
   </section>
 </div>
 {{ end }}
 
 {{ define "js" }}
-{{ $bg := resources.Get "js/bg.js" | minify | fingerprint }}
 <script>
-  // Анимация фона не влияет на первый рендер — грузим после load в idle
+  // Тень навигации после прокрутки
   (function () {
-    var src = '{{ $bg.Permalink }}';
-    var load = function () {
-      var s = document.createElement('script');
-      s.src = src;
-      s.async = true;
-      document.body.appendChild(s);
-    };
-    window.addEventListener('load', function () {
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(load, { timeout: 2000 });
+    var nav = document.getElementById('navbar');
+    if (!nav) return;
+    var onScroll = function () { nav.classList.toggle('scrolled', window.scrollY > 8); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+
+  // Сцена отвечает на курсор по всей странице: аврора уходит вглубь, портрет наклоняется (отклик, не декор)
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!window.matchMedia('(pointer: fine)').matches) return;
+    var hero = document.querySelector('.home');
+    if (!hero) return;
+    var tx = 0, ty = 0, cx = 0, cy = 0, raf = null;
+    var tick = function () {
+      cx += (tx - cx) * 0.08;
+      cy += (ty - cy) * 0.08;
+      hero.style.setProperty('--px', cx.toFixed(4));
+      hero.style.setProperty('--py', cy.toFixed(4));
+      if (Math.abs(tx - cx) > 0.002 || Math.abs(ty - cy) > 0.002) {
+        raf = requestAnimationFrame(tick);
       } else {
-        setTimeout(load, 200);
+        raf = null;
       }
+    };
+    hero.addEventListener('mousemove', function (e) {
+      var r = hero.getBoundingClientRect();
+      tx = (e.clientX - r.left) / r.width * 2 - 1;
+      ty = (e.clientY - r.top) / r.height * 2 - 1;
+      if (!raf) raf = requestAnimationFrame(tick);
+    }, { passive: true });
+    hero.addEventListener('mouseleave', function () {
+      tx = 0; ty = 0;
+      if (!raf) raf = requestAnimationFrame(tick);
     });
+  })();
+
+  // Карусели: стрелки прокрутки карточек
+  document.querySelectorAll('[data-cards-target]').forEach(function (btn) {
+    var scroller = document.getElementById(btn.dataset.cardsTarget);
+    if (!scroller) return;
+    btn.addEventListener('click', function () {
+      var card = scroller.querySelector('.card-slide');
+      var gap = parseFloat(getComputedStyle(scroller).gap) || 22;
+      var step = card ? card.getBoundingClientRect().width + gap : 320;
+      var dir = btn.dataset.cardsDir === 'prev' ? -1 : 1;
+      scroller.scrollBy({ left: step * dir, behavior: 'smooth' });
+    });
+  });
+
+  // Мягкое появление секций при скролле (один раз)
+  (function () {
+    var items = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      items.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    items.forEach(function (el) { io.observe(el); });
+
+    // страховка: секции, проскоченные мгновенным прыжком (якорь, restore скролла),
+    // IO не видит ни на одном кадре — проявляем, как только они выше вьюпорта
+    window.addEventListener('scroll', function () {
+      items.forEach(function (el) {
+        if (!el.classList.contains('in') && el.getBoundingClientRect().top < window.innerHeight) {
+          el.classList.add('in');
+          io.unobserve(el);
+        }
+      });
+    }, { passive: true });
   })();
 </script>
 {{ end }}

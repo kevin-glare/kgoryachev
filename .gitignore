@@ -15,4 +15,16 @@ hugo.linux
 # Токен Telegram-бота и chat id канала
 /.env
 
+SKILL.md
+
+/docs
+
+.github/agents
+.github/skills
+.github/hooks
+
 .DS_Store
+
+# Артефакты инструментов (дизайн-ревью, настройки ассистента)
+/.impeccable/
+/.zcode/
