@@ -103,12 +103,17 @@ jobs:
         env:
           SITE_HOST: kgoryachev.ru
         run: |
-          KEY_FILE=$(ls public/indexnow-*.txt 2>/dev/null | head -1 || true)
+          KEY_FILE=$(ls static/indexnow-*.txt public/indexnow-*.txt 2>/dev/null | head -1 || true)
           if [ -z "$KEY_FILE" ]; then
             echo "IndexNow key file not found, skipping"
             exit 0
           fi
           KEY=$(basename "$KEY_FILE" .txt)
+          mkdir -p public
+          if ! curl -fsS "https://kgoryachev.ru/sitemap.xml" -o public/sitemap.xml; then
+            echo "sitemap download failed, skipping IndexNow ping"
+            exit 0
+          fi
           SINCE=0
           if [ -f indexnow-watermark ]; then
             SINCE=$(cat indexnow-watermark)
