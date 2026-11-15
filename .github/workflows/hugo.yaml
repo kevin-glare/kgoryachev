@@ -89,3 +89,34 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+      - name: Checkout (для скрипта IndexNow)
+        uses: actions/checkout@v7
+      # IndexNow: после успешного деплоя отправляем в Bing/Yandex/Seznam только
+      # URL, чей lastmod в sitemap новее водяного знака прошлой отправки.
+      - name: Restore IndexNow watermark
+        uses: actions/cache/restore@v6
+        with:
+          path: indexnow-watermark
+          key: indexnow-${{ github.run_id }}
+          restore-keys: indexnow-
+      - name: Submit changed URLs to IndexNow
+        env:
+          SITE_HOST: kgoryachev.ru
+        run: |
+          KEY_FILE=$(ls public/indexnow-*.txt 2>/dev/null | head -1 || true)
+          if [ -z "$KEY_FILE" ]; then
+            echo "IndexNow key file not found, skipping"
+            exit 0
+          fi
+          KEY=$(basename "$KEY_FILE" .txt)
+          SINCE=0
+          if [ -f indexnow-watermark ]; then
+            SINCE=$(cat indexnow-watermark)
+          fi
+          python3 scripts/indexnow_submit.py "$KEY" "$SITE_HOST" "$SINCE"
+      - name: Save IndexNow watermark
+        if: ${{ hashFiles('indexnow-watermark') != '' }}
+        uses: actions/cache/save@v6
+        with:
+          path: indexnow-watermark
+          key: indexnow-${{ github.run_id }}
