@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="yandex-verification" content="249c2640908aca18">
+  <meta name="google-site-verification" content="gkwK6B5FS2WG2_uKoj1HoAexHmWXE3qVqVx6AQmflns">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/base/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/base/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/base/favicon-16x16.png">
@@ -11,7 +13,7 @@
 
   {{ $title := .Title }}
   {{ if eq .Kind "term" }}{{ $title = print "Статьи по тегу " $title }}{{ end }}
-  {{ $description := .Description | default .Summary | default site.Params.description | plainify | chomp }}
+  {{ $description := .Description | default .Summary | default (partial "site-description.html" .) | plainify | chomp }}
   {{ $ogImage := .Params.image | default site.Params.ogImage }}
   {{ if eq .Type "news" }}{{ $ogImage = "" }}{{ end }}
 
@@ -54,7 +56,7 @@
   {{ else }}
   <meta property="og:type" content="website">
   <meta property="og:title" content="{{ if .IsHome }}{{ site.Title }} — Tech Lead · Руководитель группы разработки{{ else }}{{ $title }} | {{ site.Title }}{{ end }}">
-  <meta property="og:description" content="{{ site.Params.description }}">
+  <meta property="og:description" content="{{ partial "site-description.html" . }}">
   {{ end }}
 
   <!-- Twitter Card -->

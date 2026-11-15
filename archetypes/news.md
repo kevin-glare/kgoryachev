@@ -5,10 +5,6 @@ date: {{ .Date }}
 draft: true
 description: ""
 toc: false
-
-# Не выносим выпуски в основной RSS и на другие списки — только этот раздел
-build:
-  list: local
 ---
 
 <!-- Единственный источник выпуска: этот файл в content/news/ с draft: true

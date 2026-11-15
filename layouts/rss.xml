@@ -1,0 +1,38 @@
+{{- /* Основная лента: только статьи (posts). News-выпуски идут своей лентой
+       /news/index.xml и в sitemap, но не в index.xml. */ -}}
+{{- $pages := slice -}}
+{{- if .IsHome -}}
+{{- $pages = where site.RegularPages "Section" "posts" -}}
+{{- else if .IsSection -}}
+{{- $pages = .RegularPages -}}
+{{- else -}}
+{{- $pages = .Pages -}}
+{{- end -}}
+{{- $limit := .Site.Config.Services.RSS.Limit -}}
+{{- if ge $limit 1 -}}
+{{- $pages = $pages | first $limit -}}
+{{- end -}}
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ if eq .Title .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{ . }} on {{ end }}{{ .Site.Title }}{{ end }}</title>
+    <link>{{ .Permalink }}</link>
+    <description>{{ if eq .Title .Site.Title }}Статьи о разработке, доставке и управлении командами{{ else }}Recent content {{ with .Title }}in {{ . }} {{ end }}on {{ .Site.Title }}{{ end }}</description>
+    <generator>Hugo</generator>{{ with .Site.LanguageCode }}
+    <language>{{ . }}</language>{{ end }}{{ if not .Date.IsZero }}
+    <lastBuildDate>{{ (index $pages.ByLastmod.Reverse 0).Lastmod.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>{{ end }}
+    {{- with .OutputFormats.Get "rss" }}
+    {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
+    {{- end }}
+    {{ range $pages }}
+    <item>
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+      {{ with .Params.author }}<author>{{ . }}</author>{{ end }}
+      <guid>{{ .Permalink }}</guid>
+      <description>{{ .Description | default .Summary | plainify | chomp | transform.XMLEscape | safeHTML }}</description>
+    </item>
+    {{ end }}
+  </channel>
+</rss>

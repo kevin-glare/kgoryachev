@@ -31,7 +31,9 @@ disableKinds = ['taxonomy']
 
 [params]
   author = 'Константин Горячев'
-  description = 'Руководитель группы разработки / Tech Lead. 10+ лет в разработке, 5+ лет руковожу командами. Проекты, опыт и статьи о разработке.'
+  # Годы для описания сайта считаются от этих точек (как в hero-панели)
+  career_since = 2016
+  leading_since = 2021
   telegram = 'https://t.me/kevinglare'
   github = 'https://github.com/kevin-glare'
   email = 'kevinglare@yandex.ru'
@@ -44,11 +46,6 @@ disableKinds = ['taxonomy']
   [markup.highlight]
     noClasses = false
     style = 'github'
-
-[sitemap]
-  changefreq = 'weekly'
-  priority = 0.5
-  filename = 'sitemap.xml'
 
 [caches]
   [caches.assets]

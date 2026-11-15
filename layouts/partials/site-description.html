@@ -1,0 +1,6 @@
+{{- /* Описание сайта для meta/OG/Twitter/JSON-LD. Годы считаются от
+       career_since/leading_since (hugo.toml), как в hero-панели, чтобы
+       числа не устаревали. Форма «лет» верна для 2026–2035 (11–19 лет). */ -}}
+{{- $itYears := sub now.Year (site.Params.career_since | int) -}}
+{{- $leadYears := sub now.Year (site.Params.leading_since | int) -}}
+{{- printf "Руководитель группы разработки / Tech Lead. %d лет коммерческой разработки, %d лет руковожу командами. Статьи и дайджесты новостей о разработке." $itYears $leadYears -}}
