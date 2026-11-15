@@ -4,7 +4,7 @@
       <span class="brand-mark" aria-hidden="true">КГ</span>
       <span class="brand-name d-none d-sm-inline">Константин Горячев</span>
     </a>
-    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+    <button class="navbar-toggler ms-auto" type="button"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Открыть меню">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -32,3 +32,30 @@
     </div>
   </div>
 </nav>
+
+<script>
+  // Бургер вместо bootstrap.bundle: переключаем .show и aria вручную.
+  // Пункт меню или Escape — закрыть; анимации нет, только вход/выход.
+  (function () {
+    var btn = document.querySelector('.navbar-toggler');
+    var menu = document.getElementById('navbarSupportedContent');
+    if (!btn || !menu) return;
+    var setOpen = function (open) {
+      menu.classList.toggle('show', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+    };
+    btn.addEventListener('click', function () {
+      setOpen(!menu.classList.contains('show'));
+    });
+    menu.addEventListener('click', function (e) {
+      if (e.target.closest('a')) setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && menu.classList.contains('show')) {
+        setOpen(false);
+        btn.focus();
+      }
+    });
+  })();
+</script>
