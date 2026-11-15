@@ -5,6 +5,11 @@
         <span class="brand-mark" style="width:30px;height:30px;border-radius:9px;font-size:0.66rem" aria-hidden="true">КГ</span>
         <span>© {{ now.Format "2006" }} Константин Горячев</span>
       </div>
+      <div class="footer-social">
+        <a href="{{ site.Params.telegram_channel }}" target="_blank" rel="noopener" aria-label="Канал в Telegram">
+          {{ partial "icon.html" (dict "name" "tg") }}
+        </a>
+      </div>
     </div>
   </div>
 </footer>

@@ -35,6 +35,7 @@ disableKinds = ['taxonomy']
   career_since = 2016
   leading_since = 2021
   telegram = 'https://t.me/kevinglare'
+  telegram_channel = 'https://t.me/kgoryachev'
   github = 'https://github.com/kevin-glare'
   email = 'kevinglare@yandex.ru'
   ogImage = '/images/base/og-cover.png'

@@ -1305,6 +1305,16 @@ h3.card-title {
   padding: 0.45rem;
 }
 
+.footer-social a .icon {
+  color: var(--ink-soft);
+  transition: color 0.25s var(--ease-out), transform 0.25s var(--ease-out);
+}
+
+.footer-social a:hover .icon {
+  color: var(--iris);
+  transform: translateY(-2px);
+}
+
 /* ===== Появление при скролле — мягкое, с лёгким блюром ===== */
 
 .js .reveal {
