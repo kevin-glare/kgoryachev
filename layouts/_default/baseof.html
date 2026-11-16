@@ -79,20 +79,32 @@
   <link rel="preconnect" href="https://mc.yandex.ru">
   {{ end }}
 
-  {{ $fonts := resources.Get "styles/fonts.css" | minify | fingerprint }}
-  <link rel="stylesheet" href="{{ $fonts.Permalink }}">
+  {{- /* Preload раньше встроенного CSS: сканер предзагрузки находит их,
+        не дожидаясь ~45 КБ стилей в потоке HTML */}}
   <link rel="preload" href="/fonts/unbounded-800-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/unbounded-800-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/golos-text-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-
-  {{ $style := resources.Get "styles/style.css" | minify | fingerprint }}
-  <link rel="stylesheet" href="{{ $style.Permalink }}">
   {{ if .IsHome }}
-  {{ $home := resources.Get "styles/home.css" | minify | fingerprint }}
-  <link rel="stylesheet" href="{{ $home.Permalink }}">
+  <link rel="preload" href="/images/base/ava-2026.webp" as="image" fetchpriority="high">
+  {{ end }}
+
+  {{- /* CSS встроен в страницу: отдельные запросы блокировали первую отрисовку,
+        а кэш GitHub Pages (max-age=600) почти не давал выгоду от кэшируемости */}}
+  {{ with resources.Get "styles/fonts.css" | minify }}
+  <style>{{ .Content | safeCSS }}</style>
+  {{ end }}
+
+  {{ with resources.Get "styles/style.css" | minify }}
+  <style>{{ .Content | safeCSS }}</style>
+  {{ end }}
+  {{ if .IsHome }}
+  {{ with resources.Get "styles/home.css" | minify }}
+  <style>{{ .Content | safeCSS }}</style>
+  {{ end }}
   {{ else }}
-  {{ $inner := resources.Get "styles/inner.css" | minify | fingerprint }}
-  <link rel="stylesheet" href="{{ $inner.Permalink }}">
+  {{ with resources.Get "styles/inner.css" | minify }}
+  <style>{{ .Content | safeCSS }}</style>
+  {{ end }}
   {{ end }}
   {{ if and .IsPage (eq .Section "posts") }}
   {{ with resources.Get "styles/syntax.css" | minify }}
