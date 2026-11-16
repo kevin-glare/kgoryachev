@@ -55,3 +55,16 @@ disableKinds = ['taxonomy']
   [caches.images]
     dir = ':resourceDir/_gen'
     maxAge = -1
+
+# Обложки доступны и как assets (resources.Get для srcset-вариантов),
+# и как static (оригиналы для og:image) — один источник файлов
+[module]
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+  [[module.mounts]]
+    source = "static"
+    target = "static"
+  [[module.mounts]]
+    source = "static/images"
+    target = "assets/images"

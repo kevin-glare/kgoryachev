@@ -223,42 +223,60 @@
         <div class="rail-body">
           <div class="cards-scroll reveal" id="projectsScroll" style="--d:.1s">
         <div class="card card-slide">
-          <img class="card-img-top" src="/images/base/subflow-640b.webp" alt="SubFlow" loading="lazy" decoding="async" width="640" height="410">
+          {{ with resources.Get "images/base/subflow-640b.webp" }}
+            {{ $small := .Resize "320x webp q82" }}
+            <img class="card-img-top" src="{{ .RelPermalink }}" srcset="{{ $small.RelPermalink }} 320w, {{ .RelPermalink }} 640w" sizes="300px" alt="SubFlow" loading="lazy" decoding="async" width="640" height="410">
+            {{ end }}
           <div class="card-body">
             <h3 class="card-title">SubFlow</h3>
             <p class="card-text">Telegram Mini App: монетизация Telegram-канала за 5 минут, подписки и выплаты на автомате.</p>
           </div>
         </div>
         <div class="card card-slide">
-          <img class="card-img-top" src="/images/base/troika-640b.webp" alt="Виртуальная Тройка" loading="lazy" decoding="async" width="640" height="410">
+          {{ with resources.Get "images/base/troika-640b.webp" }}
+            {{ $small := .Resize "320x webp q82" }}
+            <img class="card-img-top" src="{{ .RelPermalink }}" srcset="{{ $small.RelPermalink }} 320w, {{ .RelPermalink }} 640w" sizes="300px" alt="Виртуальная Тройка" loading="lazy" decoding="async" width="640" height="410">
+            {{ end }}
           <div class="card-body">
             <h3 class="card-title">Виртуальная Тройка</h3>
             <p class="card-text">Проездной в смартфоне — без пластика и очередей за билетами. В приложении «Метро Москвы».</p>
           </div>
         </div>
         <div class="card card-slide">
-          <img class="card-img-top" src="/images/base/covid-640b.webp" alt="CovidQrWallet" loading="lazy" decoding="async" width="640" height="410">
+          {{ with resources.Get "images/base/covid-640b.webp" }}
+            {{ $small := .Resize "320x webp q82" }}
+            <img class="card-img-top" src="{{ .RelPermalink }}" srcset="{{ $small.RelPermalink }} 320w, {{ .RelPermalink }} 640w" sizes="300px" alt="CovidQrWallet" loading="lazy" decoding="async" width="640" height="410">
+            {{ end }}
           <div class="card-body">
             <h3 class="card-title">CovidQrWallet</h3>
             <p class="card-text">Сертификат о вакцинации в Apple Wallet — QR-код всегда под рукой, без поиска в почте.</p>
           </div>
         </div>
         <div class="card card-slide">
-          <img class="card-img-top" src="/images/base/storysdk-640b.webp" alt="StorySDK" loading="lazy" decoding="async" width="640" height="410">
+          {{ with resources.Get "images/base/storysdk-640b.webp" }}
+            {{ $small := .Resize "320x webp q82" }}
+            <img class="card-img-top" src="{{ .RelPermalink }}" srcset="{{ $small.RelPermalink }} 320w, {{ .RelPermalink }} 640w" sizes="300px" alt="StorySDK" loading="lazy" decoding="async" width="640" height="410">
+            {{ end }}
           <div class="card-body">
             <h3 class="card-title">StorySDK</h3>
             <p class="card-text">Сторис в мобильных приложениях — истории создаются в веб-редакторе за пару кликов.</p>
           </div>
         </div>
         <div class="card card-slide">
-          <img class="card-img-top" src="/images/base/siter-640b.webp" alt="Siter" loading="lazy" decoding="async" width="640" height="410">
+          {{ with resources.Get "images/base/siter-640b.webp" }}
+            {{ $small := .Resize "320x webp q82" }}
+            <img class="card-img-top" src="{{ .RelPermalink }}" srcset="{{ $small.RelPermalink }} 320w, {{ .RelPermalink }} 640w" sizes="300px" alt="Siter" loading="lazy" decoding="async" width="640" height="410">
+            {{ end }}
           <div class="card-body">
             <h3 class="card-title">Siter</h3>
             <p class="card-text">Конструктор сайтов в облаке — без навыков программирования. Лучший продукт дня/недели/месяца на Product Hunt.</p>
           </div>
         </div>
         <div class="card card-slide">
-          <img class="card-img-top" src="/images/base/web-640b.webp" alt="Вебинариум" loading="lazy" decoding="async" width="640" height="410">
+          {{ with resources.Get "images/base/web-640b.webp" }}
+            {{ $small := .Resize "320x webp q82" }}
+            <img class="card-img-top" src="{{ .RelPermalink }}" srcset="{{ $small.RelPermalink }} 320w, {{ .RelPermalink }} 640w" sizes="300px" alt="Вебинариум" loading="lazy" decoding="async" width="640" height="410">
+            {{ end }}
           <div class="card-body">
             <h3 class="card-title">Вебинариум</h3>
             <p class="card-text">Онлайн-школа подготовки к ЕГЭ и ОГЭ: от MVP до первой рабочей версии.</p>
@@ -283,7 +301,10 @@
         <div class="rail-body">
           <div class="cards-scroll reveal" id="eduScroll" style="--d:.1s">
           <div class="card card-slide">
-          <img class="card-img-top" src="/images/base/edu6.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="640" height="410">
+          {{ with resources.Get "images/base/edu6.webp" }}
+            {{ $small := .Resize "320x webp q82" }}
+            <img class="card-img-top" src="{{ .RelPermalink }}" srcset="{{ $small.RelPermalink }} 320w, {{ .RelPermalink }} 640w" sizes="300px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="640" height="410">
+            {{ end }}
           <div class="card-body">
             <h3 class="card-title">Путь лидера</h3>
             <p class="card-subtitle">RWB Образование</p>
@@ -291,28 +312,40 @@
         </div>
 
         <div class="card card-slide">
-          <img class="card-img-top" src="/images/base/edu1.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="640" height="410">
+          {{ with resources.Get "images/base/edu1.webp" }}
+            {{ $small := .Resize "320x webp q82" }}
+            <img class="card-img-top" src="{{ .RelPermalink }}" srcset="{{ $small.RelPermalink }} 320w, {{ .RelPermalink }} 640w" sizes="300px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="640" height="410">
+            {{ end }}
           <div class="card-body">
             <h3 class="card-title">Микросервисная архитектура</h3>
             <p class="card-subtitle">Microarch</p>
           </div>
         </div>
                 <div class="card card-slide">
-          <img class="card-img-top" src="/images/base/edu4.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="640" height="410">
+          {{ with resources.Get "images/base/edu4.webp" }}
+            {{ $small := .Resize "320x webp q82" }}
+            <img class="card-img-top" src="{{ .RelPermalink }}" srcset="{{ $small.RelPermalink }} 320w, {{ .RelPermalink }} 640w" sizes="300px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="640" height="410">
+            {{ end }}
           <div class="card-body">
             <h3 class="card-title">Разработка на Go</h3>
             <p class="card-subtitle">Thinknetica</p>
           </div>
         </div>
                 <div class="card card-slide">
-          <img class="card-img-top" src="/images/base/edu2.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="640" height="410">
+          {{ with resources.Get "images/base/edu2.webp" }}
+            {{ $small := .Resize "320x webp q82" }}
+            <img class="card-img-top" src="{{ .RelPermalink }}" srcset="{{ $small.RelPermalink }} 320w, {{ .RelPermalink }} 640w" sizes="300px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="640" height="410">
+            {{ end }}
           <div class="card-body">
             <h3 class="card-title">Оптимизация Ruby/Rails-приложений</h3>
             <p class="card-subtitle">Thinknetica</p>
           </div>
         </div>
         <div class="card card-slide">
-          <img class="card-img-top" src="/images/base/edu3.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="640" height="410">
+          {{ with resources.Get "images/base/edu3.webp" }}
+            {{ $small := .Resize "320x webp q82" }}
+            <img class="card-img-top" src="{{ .RelPermalink }}" srcset="{{ $small.RelPermalink }} 320w, {{ .RelPermalink }} 640w" sizes="300px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="640" height="410">
+            {{ end }}
           <div class="card-body">
             <h3 class="card-title">Безопасность Rails-приложений</h3>
             <p class="card-subtitle">Thinknetica</p>
@@ -320,7 +353,10 @@
         </div>
 
         <div class="card card-slide">
-          <img class="card-img-top" src="/images/base/edu5.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="640" height="410">
+          {{ with resources.Get "images/base/edu5.webp" }}
+            {{ $small := .Resize "320x webp q82" }}
+            <img class="card-img-top" src="{{ .RelPermalink }}" srcset="{{ $small.RelPermalink }} 320w, {{ .RelPermalink }} 640w" sizes="300px" alt="" aria-hidden="true" loading="lazy" decoding="async" width="640" height="410">
+            {{ end }}
           <div class="card-body">
             <h3 class="card-title">5 soft skills проджект-менеджера в IT</h3>
             <p class="card-subtitle">Skillsetter</p>

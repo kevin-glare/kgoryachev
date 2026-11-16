@@ -3,7 +3,16 @@
     <a href="{{ .Permalink }}">
       {{ with .Params.image }}
       <div class="post-img d-flex justify-content-center align-items-center">
+        {{- /* Обложка в webp-вариантах под ширину карточки (крупный кандидат
+              400w ≤ контейнера на всех ширинах); оригинал остаётся во
+              front matter для og:image (Telegram не рендерит webp) */}}
+        {{ with resources.Get (strings.TrimPrefix "/" .) }}
+        {{ $small := .Resize "320x webp q82" }}
+        {{ $mid := .Resize "400x webp q82" }}
+        <img src="{{ $mid.RelPermalink }}" srcset="{{ $small.RelPermalink }} 320w, {{ $mid.RelPermalink }} 400w" sizes="(min-width: 992px) 416px, (min-width: 768px) 336px, calc(100vw - 48px)" alt="" aria-hidden="true" class="card-img-top img-fluid" loading="lazy" decoding="async" width="{{ $mid.Width }}" height="{{ $mid.Height }}">
+        {{ else }}
         <img src="{{ . }}" alt="" aria-hidden="true" class="card-img-top img-fluid" loading="lazy" decoding="async">
+        {{ end }}
       </div>
       {{ end }}
       <div class="card-body">
