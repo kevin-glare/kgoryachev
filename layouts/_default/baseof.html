@@ -87,11 +87,17 @@
 
   {{ $style := resources.Get "styles/style.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $style.Permalink }}">
-  {{ if and .IsPage (eq .Section "posts") }}
-  {{ $syntax := resources.Get "styles/syntax.css" | minify | fingerprint }}
-  <link rel="stylesheet" href="{{ $syntax.Permalink }}">
+  {{ if .IsHome }}
+  {{ $home := resources.Get "styles/home.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $home.Permalink }}">
+  {{ else }}
+  {{ $inner := resources.Get "styles/inner.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $inner.Permalink }}">
   {{ end }}
-  {{ block "css" . }}
+  {{ if and .IsPage (eq .Section "posts") }}
+  {{ with resources.Get "styles/syntax.css" | minify }}
+  <style>{{ .Content | safeCSS }}</style>
+  {{ end }}
   {{ end }}
 
   {{ partial "structured-data.html" . }}
@@ -100,8 +106,10 @@
 <body{{ if .IsHome }} class="page-home"{{ end }}>
   <script>document.documentElement.classList.add('js');</script>
   {{ partial "navbar.html" . }}
-  {{ block "main" . }}
-  {{ end }}
+  <main>
+    {{ block "main" . }}
+    {{ end }}
+  </main>
   {{ partial "footer.html" . }}
 
   {{ if eq hugo.Environment "production" }}

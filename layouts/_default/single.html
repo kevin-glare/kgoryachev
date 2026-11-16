@@ -3,7 +3,7 @@
 {{ $sectionTitle := "Статьи" }}
 {{ if eq .Type "news" }}{{ $sectionURL = "/news/" }}{{ $sectionTitle = "Новости" }}{{ end }}
 <div id="post">
-  <main class="container mb-6">
+  <div class="container container-article mb-6">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">Главная</a></li>
@@ -93,7 +93,7 @@
         </div>
       </div>
     </div>
-  </main>
+  </div>
 
   <div class="container content">
     <ul class="post-nav list-unstyled">
